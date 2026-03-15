@@ -20,8 +20,47 @@ import LeadForm from '../components/LeadForm.astro';
   </script>
 
   <style>
-    /* ─── HERO ─── */
-    .hero {
+
+    /* ─── HERO 2-COLUMN LAYOUT ─── */
+    .hero { min-height: auto; padding: 60px 0; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-left { color: white; }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      color: white; font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 7px 20px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 900; line-height: 1.1;
+      margin-bottom: 16px; letter-spacing: -1.5px; color: white;
+    }
+    .hero-sub { font-size: 17px; color: rgba(255,255,255,.9); margin-bottom: 20px; line-height: 1.65; }
+    .hero-phone-line {
+      font-size: 16px; font-weight: 600; color: rgba(255,255,255,.85);
+      margin-bottom: 28px;
+    }
+    .hero-phone-line a { color: #f5c842; font-weight: 800; font-size: 1.1rem; text-decoration: none; }
+    .hero-phone-line a:hover { color: white; }
+    .hero-right { }
+
+    @media(max-width: 960px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 32px; }
+      .hero-left { text-align: center; }
+      .trust-row { justify-content: center; }
+    }
+
+    /* ─── OLD HERO (kept for reference) ─── */
+    .hero-old {
       background: #3aa1f8;
       min-height: 580px;
       display: flex;
@@ -250,20 +289,25 @@ import LeadForm from '../components/LeadForm.astro';
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-eyebrow">✦ Wichita's Trusted Local Cash Home Buyer</div>
-      <h1>Get A Fair Offer<br/>On Your Home.</h1>
-      <p class="hero-sub">No Fees. No Commissions. Put More Cash In Your Pocket.</p>
-      <p class="hero-tagline"><strong>You Choose The Closing Date.</strong> We Pay All Costs!</p>
-      <div class="hero-cta">
-        <a href="tel:3163683344" class="btn-hero-primary">📞 Call (316) 368-3344</a>
-        <a href="/contact" class="btn-hero-secondary">Get a Cash Offer →</a>
-      </div>
-      <div class="trust-row">
-        <div class="trust-chip">⭐⭐⭐⭐⭐ Google Reviews</div>
-        <div class="trust-chip">✅ No Fees or Commissions</div>
-        <div class="trust-chip">⚡ Offer in 24 Hours</div>
-        <div class="trust-chip">🏠 Close in 7 Days</div>
+    <div class="container">
+      <div class="hero-layout">
+        <!-- LEFT -->
+        <div class="hero-left">
+          <div class="hero-eyebrow">✦ Wichita's Local Cash Home Buyer</div>
+          <h1>Get A Fair Offer<br/>On Your Home.</h1>
+          <p class="hero-sub">No Fees. No Commissions. Put More Cash In Your Pocket. You Choose The Closing Date.</p>
+          <p class="hero-phone-line">Call or Text: <a href="tel:3163683344">(316) 368-3344</a></p>
+          <div class="trust-row">
+            <div class="trust-chip">⭐⭐⭐⭐⭐ Google Reviews</div>
+            <div class="trust-chip">✅ No Fees</div>
+            <div class="trust-chip">⚡ 24hr Offer</div>
+            <div class="trust-chip">🏠 Close in 7 Days</div>
+          </div>
+        </div>
+        <!-- RIGHT: Form -->
+        <div class="hero-right">
+          <LeadForm />
+        </div>
       </div>
     </div>
   </section>
@@ -416,27 +460,7 @@ import LeadForm from '../components/LeadForm.astro';
     </div>
   </section>
 
-  <!-- ═══ FORM PLACEHOLDER ═══ -->
-  <section class="section bg-blue">
-    <div class="container">
-      <div class="form-section">
-        <div class="form-left">
-          <span class="eyebrow" style="color:rgba(255,255,255,.7)">Get Started</span>
-          <h2 class="section-title section-title-white">Get Your Fair Cash Offer Today</h2>
-          <p class="section-sub section-sub-white">No obligation. No fees. Just a straightforward offer from a local Wichita buyer — within 24 hours.</p>
-          <ul class="form-bullets">
-            <li>✓ Offer within 24 hours</li>
-            <li>✓ Close in as little as 7 days</li>
-            <li>✓ We pay all closing costs</li>
-            <li>✓ No repairs, no cleaning, no showings</li>
-          </ul>
-        </div>
-        <div class="form-right">
-          <LeadForm />
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- ═══ AREAS ═══ -->
   <section class="section bg-white">
