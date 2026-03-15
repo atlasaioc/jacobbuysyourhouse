@@ -1,162 +1,427 @@
 ---
 const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 ---
+
 <style>
-  .lead-form-wrap { background: white; border-radius: 20px; padding: 40px 36px; box-shadow: 0 8px 48px rgba(0,0,0,.14); }
-  .form-header { margin-bottom: 28px; }
-  .form-header h3 { font-size: 1.35rem; font-weight: 800; color: #1d1d1d; margin-bottom: 6px; }
-  .form-header p { font-size: 14px; color: #666; line-height: 1.5; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-full { grid-column: 1 / -1; }
-  .field { display: flex; flex-direction: column; gap: 5px; }
-  .field label { font-size: 12.5px; font-weight: 700; color: #444; text-transform: uppercase; letter-spacing: .8px; }
-  .field input, .field select, .field textarea {
-    width: 100%; padding: 13px 16px; border: 1.5px solid #dde4ee;
-    border-radius: 8px; font-size: 15px; font-family: inherit; color: #1d1d1d;
-    background: #fafbfd; transition: border-color .15s, box-shadow .15s; outline: none; -webkit-appearance: none;
+  /* ── WRAPPER ── */
+  .mf-wrap {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 36px;
+    box-shadow: 0 8px 48px rgba(0,0,0,.14);
+    position: relative;
+    overflow: hidden;
   }
-  .field input:focus, .field select:focus, .field textarea:focus {
+
+  /* ── PROGRESS BAR ── */
+  .mf-progress-wrap { margin-bottom: 28px; }
+  .mf-progress-label { font-size: 12px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .mf-progress-label span { color: #3aa1f8; }
+  .mf-progress-bar { background: #e8f5ff; border-radius: 100px; height: 6px; overflow: hidden; }
+  .mf-progress-fill { background: #3aa1f8; height: 100%; border-radius: 100px; transition: width .4s ease; }
+
+  /* ── STEPS ── */
+  .mf-step { display: none; animation: fadeIn .25s ease; }
+  .mf-step.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .mf-step-title { font-size: 1.25rem; font-weight: 800; color: #1d1d1d; margin-bottom: 6px; line-height: 1.3; }
+  .mf-step-sub { font-size: 14px; color: #666; margin-bottom: 24px; line-height: 1.5; }
+
+  /* ── FIELDS ── */
+  .mf-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .mf-field label { font-size: 12px; font-weight: 700; color: #444; text-transform: uppercase; letter-spacing: .8px; }
+  .mf-field input, .mf-field select, .mf-field textarea {
+    width: 100%; padding: 14px 16px;
+    border: 1.5px solid #dde4ee; border-radius: 10px;
+    font-size: 15px; font-family: inherit; color: #1d1d1d;
+    background: #fafbfd; outline: none; transition: border-color .15s, box-shadow .15s;
+    -webkit-appearance: none;
+  }
+  .mf-field input:focus, .mf-field select:focus, .mf-field textarea:focus {
     border-color: #3aa1f8; box-shadow: 0 0 0 3px rgba(58,161,248,.12); background: white;
   }
-  .field input::placeholder, .field textarea::placeholder { color: #aab; }
-  .field textarea { resize: vertical; min-height: 80px; }
-  .field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
-  .submit-btn {
-    width: 100%; padding: 18px; background: #e87122; color: white;
-    font-size: 16px; font-weight: 800; border: none; border-radius: 10px;
-    cursor: pointer; margin-top: 6px; box-shadow: 0 4px 16px rgba(232,113,34,.4);
-    transition: all .2s; font-family: inherit; letter-spacing: .3px;
+  .mf-field input::placeholder, .mf-field textarea::placeholder { color: #bbb; }
+  .mf-field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+  .mf-field textarea { resize: vertical; min-height: 80px; }
+  .mf-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── CHOICE BUTTONS ── */
+  .mf-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .mf-choice {
+    border: 2px solid #e0e8f0; border-radius: 12px;
+    padding: 18px 16px; text-align: center;
+    cursor: pointer; font-size: 15px; font-weight: 600;
+    color: #444; background: #fafbfd; transition: all .15s;
   }
-  .submit-btn:hover { background: #c45a12; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(232,113,34,.5); }
-  .submit-btn:disabled { background: #aaa; transform: none; box-shadow: none; cursor: not-allowed; }
-  .form-disclaimer { font-size: 12px; color: #999; text-align: center; margin-top: 14px; line-height: 1.5; }
-  .form-success { display: none; text-align: center; padding: 32px 16px; }
-  .form-success .success-icon { font-size: 3.5rem; margin-bottom: 16px; }
-  .form-success h3 { font-size: 1.4rem; font-weight: 800; color: #1d1d1d; margin-bottom: 10px; }
-  .form-success p { font-size: 15px; color: #555; line-height: 1.65; margin-bottom: 8px; }
-  .form-success a { color: #e87122; font-weight: 700; }
-  .form-error { display: none; background: #fff0f0; border: 1px solid #fcc; border-radius: 8px; padding: 12px 16px; font-size: 14px; color: #c00; margin-top: 8px; }
-  @media(max-width: 560px) { .lead-form-wrap { padding: 28px 20px; } .form-grid { grid-template-columns: 1fr; } }
+  .mf-choice:hover { border-color: #3aa1f8; color: #1a82d8; background: #e8f5ff; }
+  .mf-choice.selected { border-color: #3aa1f8; color: #1a82d8; background: #e8f5ff; }
+  .mf-choice-icon { font-size: 1.6rem; display: block; margin-bottom: 6px; }
+
+  /* ── SLIDER ── */
+  .mf-slider-val { font-size: 2.2rem; font-weight: 900; color: #1a82d8; text-align: center; margin-bottom: 12px; }
+  input[type=range] {
+    -webkit-appearance: none; width: 100%; height: 6px;
+    background: #e0e8f0; border-radius: 100px; outline: none; margin-bottom: 8px;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 26px; height: 26px;
+    background: #3aa1f8; border-radius: 50%; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(58,161,248,.4);
+    border: 3px solid white;
+  }
+  .mf-slider-range { display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: 4px; }
+
+  /* ── CONSENT ── */
+  .mf-consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; margin-bottom: 16px; }
+  .mf-consent input[type=checkbox] { width: 18px; height: 18px; min-width: 18px; margin-top: 2px; cursor: pointer; accent-color: #3aa1f8; }
+  .mf-consent label { font-size: 12.5px; color: #777; line-height: 1.5; cursor: pointer; }
+
+  /* ── BUTTONS ── */
+  .mf-btn-next, .mf-btn-submit {
+    width: 100%; padding: 17px;
+    background: #e87122; color: white;
+    font-size: 16px; font-weight: 800;
+    border: none; border-radius: 10px;
+    cursor: pointer; margin-top: 8px;
+    box-shadow: 0 4px 16px rgba(232,113,34,.4);
+    transition: all .2s; font-family: inherit;
+    letter-spacing: .3px;
+  }
+  .mf-btn-next:hover, .mf-btn-submit:hover { background: #c45a12; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(232,113,34,.5); }
+  .mf-btn-next:disabled, .mf-btn-submit:disabled { background: #ccc; transform: none; box-shadow: none; cursor: not-allowed; }
+  .mf-back { background: none; border: none; color: #888; font-size: 13px; cursor: pointer; padding: 8px 0; font-family: inherit; margin-top: 4px; }
+  .mf-back:hover { color: #333; }
+
+  /* ── ERROR ── */
+  .mf-error { display: none; background: #fff0f0; border: 1px solid #fcc; border-radius: 8px; padding: 10px 14px; font-size: 13.5px; color: #c00; margin-top: 8px; }
+
+  /* ── SUCCESS ── */
+  .mf-success { display: none; text-align: center; padding: 24px 8px; }
+  .mf-success .s-icon { font-size: 4rem; margin-bottom: 16px; }
+  .mf-success h3 { font-size: 1.4rem; font-weight: 900; color: #1d1d1d; margin-bottom: 10px; }
+  .mf-success p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+  .mf-success a { color: #e87122; font-weight: 700; text-decoration: none; }
+
+  .mf-disclaimer { font-size: 12px; color: #aaa; text-align: center; margin-top: 14px; line-height: 1.5; }
+
+  @media(max-width: 520px) {
+    .mf-wrap { padding: 28px 18px; }
+    .mf-two { grid-template-columns: 1fr; }
+    .mf-choices { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 
-<div class="lead-form-wrap" id="lead-form-container">
-  <div class="form-header">
-    <h3>Get Your Cash Offer Today</h3>
-    <p>Fill out the form. Jacob will reach out within a few hours — no pressure, no obligation.</p>
+<div class="mf-wrap" id="mf-container">
+
+  <!-- PROGRESS -->
+  <div class="mf-progress-wrap" id="mf-progress-wrap">
+    <div class="mf-progress-label">
+      <span>Step <span id="mf-current-step">1</span> of 9</span>
+      <span id="mf-progress-pct">11%</span>
+    </div>
+    <div class="mf-progress-bar">
+      <div class="mf-progress-fill" id="mf-progress-fill" style="width:11%"></div>
+    </div>
   </div>
 
-  <form id="lead-form" novalidate>
-    <input type="hidden" name="access_key" value={ACCESS_KEY} />
-    <input type="hidden" name="subject" value="🏠 New Lead — Jacob Buys Your House" />
-    <input type="hidden" name="from_name" value="jacobbuysyourhouse.com" />
-    <input type="checkbox" name="botcheck" style="display:none" />
+  <!-- ══ STEP 1: Phone + Address ══ -->
+  <div class="mf-step active" data-step="1">
+    <div class="mf-step-title">Get Your Cash Offer</div>
+    <div class="mf-step-sub">Enter your phone and property address to get started. Takes less than 2 minutes.</div>
+    <div class="mf-field">
+      <label>Phone Number *</label>
+      <input type="tel" id="mf_phone" placeholder="(316) 555-0000" />
+    </div>
+    <div class="mf-field">
+      <label>Property Address *</label>
+      <input type="text" id="mf_address" placeholder="123 Main St, Wichita, KS" />
+    </div>
+    <div class="mf-consent">
+      <input type="checkbox" id="mf_sms_consent" />
+      <label for="mf_sms_consent">By checking this box, you consent to receive SMS messages from our team regarding your property inquiry. Message and data rates may apply.</label>
+    </div>
+    <div class="mf-error" id="mf-err-1">Please enter your phone number and property address.</div>
+    <button class="mf-btn-next" onclick="mfNext(1)">GET YOUR CASH OFFER →</button>
+  </div>
 
-    <div class="form-grid">
-      <div class="field form-full">
-        <label for="lf_address">Property Address *</label>
-        <input type="text" id="lf_address" name="property_address" placeholder="123 Main St, Wichita, KS" required />
+  <!-- ══ STEP 2: Listed? ══ -->
+  <div class="mf-step" data-step="2">
+    <div class="mf-step-title">Is your property already listed?</div>
+    <div class="mf-step-sub">With a real estate agent or on the market.</div>
+    <div class="mf-choices">
+      <div class="mf-choice" data-field="listed" data-value="Yes" onclick="mfChoice(this, 'listed', 'Yes', 3)">
+        <span class="mf-choice-icon">✅</span> Yes
       </div>
-      <div class="field">
-        <label for="lf_name">Your Name *</label>
-        <input type="text" id="lf_name" name="name" placeholder="John Smith" required />
-      </div>
-      <div class="field">
-        <label for="lf_phone">Phone Number *</label>
-        <input type="tel" id="lf_phone" name="phone" placeholder="(316) 555-0000" required />
-      </div>
-      <div class="field">
-        <label for="lf_email">Email Address</label>
-        <input type="email" id="lf_email" name="email" placeholder="john@email.com" />
-      </div>
-      <div class="field">
-        <label for="lf_situation">Your Situation</label>
-        <select id="lf_situation" name="situation">
-          <option value="">Select one...</option>
-          <option>Inherited Property</option>
-          <option>Facing Foreclosure</option>
-          <option>Going Through Divorce</option>
-          <option>Needs Major Repairs</option>
-          <option>Tired Landlord / Rental Property</option>
-          <option>Behind on Taxes</option>
-          <option>Relocating</option>
-          <option>Vacant Property</option>
-          <option>Probate / Estate Sale</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="lf_timeline">How Soon?</label>
-        <select id="lf_timeline" name="timeline">
-          <option value="">Select one...</option>
-          <option>As fast as possible (ASAP)</option>
-          <option>Within 30 days</option>
-          <option>1–3 months</option>
-          <option>Just exploring options</option>
-        </select>
-      </div>
-      <div class="field form-full">
-        <label for="lf_message">Anything else we should know?</label>
-        <textarea id="lf_message" name="message" placeholder="Property condition, tenants, liens, or anything helpful..."></textarea>
+      <div class="mf-choice" data-field="listed" data-value="No" onclick="mfChoice(this, 'listed', 'No', 3)">
+        <span class="mf-choice-icon">❌</span> No
       </div>
     </div>
-
-    <button type="submit" class="submit-btn" id="lf-submit">Get My Cash Offer →</button>
-    <div class="form-error" id="lf-error">Something went wrong. Please call us directly at (316) 368-3344.</div>
-  </form>
-
-  <div class="form-success" id="lf-success">
-    <div class="success-icon">✅</div>
-    <h3>We got it — thanks!</h3>
-    <p>Jacob will reach out within a few hours to discuss your property.</p>
-    <p>In a hurry? Call or text: <a href="tel:3163683344">(316) 368-3344</a></p>
+    <button class="mf-back" onclick="mfBack(1)">← Back</button>
   </div>
 
-  <p class="form-disclaimer">🔒 Your info is private and will never be shared or sold.</p>
+  <!-- ══ STEP 3: Timeline ══ -->
+  <div class="mf-step" data-step="3">
+    <div class="mf-step-title">How quickly are you wanting to sell?</div>
+    <div class="mf-step-sub">This helps us prioritize and prepare the right offer for you.</div>
+    <div class="mf-field">
+      <select id="mf_timeline">
+        <option value="">Select One Option</option>
+        <option>As Quickly As Possible</option>
+        <option>Within 14 Days</option>
+        <option>Within 1 Month</option>
+        <option>Within 3 Months</option>
+      </select>
+    </div>
+    <div class="mf-error" id="mf-err-3">Please select a timeline.</div>
+    <button class="mf-btn-next" onclick="mfNext(3)">NEXT →</button>
+    <button class="mf-back" onclick="mfBack(2)">← Back</button>
+  </div>
+
+  <!-- ══ STEP 4: Condition ══ -->
+  <div class="mf-step" data-step="4">
+    <div class="mf-step-title">What is the property's current condition?</div>
+    <div class="mf-step-sub">Be honest — it helps us make a fair offer quickly.</div>
+    <div class="mf-choices" style="grid-template-columns:1fr">
+      <div class="mf-choice" data-field="condition" data-value="Needs Lots Of Work" onclick="mfChoice(this, 'condition', 'Needs Lots Of Work', 5)">
+        <span class="mf-choice-icon">🔨</span> Needs Lots Of Work
+      </div>
+      <div class="mf-choice" data-field="condition" data-value="Needs Some Repairs" onclick="mfChoice(this, 'condition', 'Needs Some Repairs', 5)">
+        <span class="mf-choice-icon">🔧</span> Needs Some Repairs
+      </div>
+      <div class="mf-choice" data-field="condition" data-value="Just Needs Cleaning Out" onclick="mfChoice(this, 'condition', 'Just Needs Cleaning Out', 5)">
+        <span class="mf-choice-icon">🧹</span> Just Needs Cleaning Out
+      </div>
+    </div>
+    <button class="mf-back" onclick="mfBack(3)">← Back</button>
+  </div>
+
+  <!-- ══ STEP 5: As-Is Value ══ -->
+  <div class="mf-step" data-step="5">
+    <div class="mf-step-title">How much do you think the property is worth as-is?</div>
+    <div class="mf-step-sub">Move the slider to your best estimate. No wrong answer — just helps us understand your expectations.</div>
+    <div class="mf-slider-val" id="mf-slider-display">$150,000</div>
+    <input type="range" id="mf_as_is_value" min="20000" max="500000" step="5000" value="150000"
+      oninput="document.getElementById('mf-slider-display').textContent = '$' + Number(this.value).toLocaleString()" />
+    <div class="mf-slider-range"><span>$20,000</span><span>$500,000+</span></div>
+    <button class="mf-btn-next" onclick="mfNext(5)" style="margin-top:20px">NEXT →</button>
+    <button class="mf-back" onclick="mfBack(4)">← Back</button>
+  </div>
+
+  <!-- ══ STEP 6: Cash Offer Price ══ -->
+  <div class="mf-step" data-step="6">
+    <div class="mf-step-title">If we could buy as-is, quickly, for cash and cover all closing costs — what would be a fair price?</div>
+    <div class="mf-step-sub">This is your number, not ours. Helps us know if we're in the right ballpark.</div>
+    <div class="mf-slider-val" id="mf-slider2-display">$150,000</div>
+    <input type="range" id="mf_offer_expectation" min="20000" max="500000" step="5000" value="150000"
+      oninput="document.getElementById('mf-slider2-display').textContent = '$' + Number(this.value).toLocaleString()" />
+    <div class="mf-slider-range"><span>$20,000</span><span>$500,000+</span></div>
+    <button class="mf-btn-next" onclick="mfNext(6)" style="margin-top:20px">NEXT →</button>
+    <button class="mf-back" onclick="mfBack(5)">← Back</button>
+  </div>
+
+  <!-- ══ STEP 7: Reason for Selling ══ -->
+  <div class="mf-step" data-step="7">
+    <div class="mf-step-title">Why are you looking to sell?</div>
+    <div class="mf-step-sub">A little context helps us serve you better — feel free to share as much or as little as you'd like.</div>
+    <div class="mf-field">
+      <textarea id="mf_reason" placeholder="e.g. Inherited from a family member, going through a divorce, need to relocate for work..."></textarea>
+    </div>
+    <button class="mf-btn-next" onclick="mfNext(7)">NEXT →</button>
+    <button class="mf-back" onclick="mfBack(6)">← Back</button>
+  </div>
+
+  <!-- ══ STEP 8: How did you hear about us ══ -->
+  <div class="mf-step" data-step="8">
+    <div class="mf-step-title">How did you hear about us?</div>
+    <div class="mf-step-sub">We appreciate you taking a moment to let us know.</div>
+    <div class="mf-field">
+      <select id="mf_source">
+        <option value="">Select One</option>
+        <option>Google Search</option>
+        <option>TV</option>
+        <option>Radio</option>
+        <option>Social Media</option>
+        <option>Mail</option>
+        <option>Referral from a Friend</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="mf-btn-next" onclick="mfNext(8)">NEXT →</button>
+    <button class="mf-back" onclick="mfBack(7)">← Back</button>
+  </div>
+
+  <!-- ══ STEP 9: Name + Email ══ -->
+  <div class="mf-step" data-step="9">
+    <div class="mf-step-title">Almost done! What's your name and email?</div>
+    <div class="mf-step-sub">We'll use this to send your offer details and stay in touch.</div>
+    <div class="mf-two">
+      <div class="mf-field">
+        <label>First Name *</label>
+        <input type="text" id="mf_first_name" placeholder="John" />
+      </div>
+      <div class="mf-field">
+        <label>Last Name</label>
+        <input type="text" id="mf_last_name" placeholder="Smith" />
+      </div>
+    </div>
+    <div class="mf-field">
+      <label>Email Address</label>
+      <input type="email" id="mf_email" placeholder="john@email.com" />
+    </div>
+    <div class="mf-error" id="mf-err-9">Please enter your first name.</div>
+    <button class="mf-btn-submit" id="mf-submit-btn" onclick="mfSubmit()">GET MY CASH OFFER 🏠</button>
+    <button class="mf-back" onclick="mfBack(8)">← Back</button>
+  </div>
+
+  <!-- ══ SUCCESS ══ -->
+  <div class="mf-success" id="mf-success">
+    <div class="s-icon">🏡</div>
+    <h3>Thanks! Your offer is in the works.</h3>
+    <p>A member of our team will be reaching out to you <strong>in the next few minutes</strong>.</p>
+    <p>We're excited to connect with you!</p>
+    <p style="margin-top:16px">In a hurry? Call or text directly:<br/><a href="tel:3163683344">(316) 368-3344</a></p>
+  </div>
+
+  <p class="mf-disclaimer" id="mf-disclaimer">🔒 Your information is private and will never be shared or sold.</p>
+
 </div>
 
-<script>
-  const form = document.getElementById('lead-form');
-  const submitBtn = document.getElementById('lf-submit');
-  const successDiv = document.getElementById('lf-success');
-  const errorDiv = document.getElementById('lf-error');
+<script define:vars={{ ACCESS_KEY }}>
+  // Store all form data
+  const mfData = {};
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errorDiv.style.display = 'none';
+  function mfUpdateProgress(step) {
+    const total = 9;
+    const pct = Math.round((step / total) * 100);
+    document.getElementById('mf-current-step').textContent = step;
+    document.getElementById('mf-progress-pct').textContent = pct + '%';
+    document.getElementById('mf-progress-fill').style.width = pct + '%';
+  }
 
-    const phone = document.getElementById('lf_phone').value.trim();
-    const address = document.getElementById('lf_address').value.trim();
-    const name = document.getElementById('lf_name').value.trim();
+  function mfShowStep(step) {
+    document.querySelectorAll('.mf-step').forEach(s => s.classList.remove('active'));
+    const el = document.querySelector(`[data-step="${step}"]`);
+    if (el) el.classList.add('active');
+    mfUpdateProgress(step);
+  }
 
-    if (!phone || !address || !name) {
-      errorDiv.textContent = 'Please fill in your name, property address, and phone number.';
-      errorDiv.style.display = 'block';
+  function mfNext(currentStep) {
+    // Validation
+    if (currentStep === 1) {
+      const phone = document.getElementById('mf_phone').value.trim();
+      const address = document.getElementById('mf_address').value.trim();
+      if (!phone || !address) {
+        document.getElementById('mf-err-1').style.display = 'block';
+        return;
+      }
+      document.getElementById('mf-err-1').style.display = 'none';
+      mfData.phone = phone;
+      mfData.address = address;
+      mfData.sms_consent = document.getElementById('mf_sms_consent').checked ? 'Yes' : 'No';
+    }
+    if (currentStep === 3) {
+      const val = document.getElementById('mf_timeline').value;
+      if (!val) { document.getElementById('mf-err-3').style.display = 'block'; return; }
+      document.getElementById('mf-err-3').style.display = 'none';
+      mfData.timeline = val;
+    }
+    if (currentStep === 5) {
+      mfData.as_is_value = '$' + Number(document.getElementById('mf_as_is_value').value).toLocaleString();
+    }
+    if (currentStep === 6) {
+      mfData.offer_expectation = '$' + Number(document.getElementById('mf_offer_expectation').value).toLocaleString();
+    }
+    if (currentStep === 7) {
+      mfData.selling_reason = document.getElementById('mf_reason').value.trim();
+    }
+    if (currentStep === 8) {
+      mfData.how_heard = document.getElementById('mf_source').value;
+    }
+    mfShowStep(currentStep + 1);
+    window.scrollTo({ top: document.getElementById('mf-container').offsetTop - 20, behavior: 'smooth' });
+  }
+
+  function mfBack(goToStep) {
+    mfShowStep(goToStep);
+    window.scrollTo({ top: document.getElementById('mf-container').offsetTop - 20, behavior: 'smooth' });
+  }
+
+  function mfChoice(el, field, value, nextStep) {
+    // Highlight selection
+    el.closest('.mf-choices').querySelectorAll('.mf-choice').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    mfData[field] = value;
+    // Auto-advance after brief pause
+    setTimeout(() => mfShowStep(nextStep), 300);
+    window.scrollTo({ top: document.getElementById('mf-container').offsetTop - 20, behavior: 'smooth' });
+  }
+
+  async function mfSubmit() {
+    const firstName = document.getElementById('mf_first_name').value.trim();
+    if (!firstName) {
+      document.getElementById('mf-err-9').style.display = 'block';
       return;
     }
+    document.getElementById('mf-err-9').style.display = 'none';
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    mfData.first_name = firstName;
+    mfData.last_name = document.getElementById('mf_last_name').value.trim();
+    mfData.email = document.getElementById('mf_email').value.trim();
+    mfData.name = firstName + ' ' + mfData.last_name;
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    const btn = document.getElementById('mf-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    // Build submission payload
+    const payload = {
+      access_key: ACCESS_KEY,
+      subject: '🏠 New Lead — Jacob Buys Your House',
+      from_name: 'jacobbuysyourhouse.com',
+      ...mfData,
+      message: `
+PROPERTY: ${mfData.address}
+PHONE: ${mfData.phone}
+NAME: ${mfData.name}
+EMAIL: ${mfData.email || 'Not provided'}
+---
+Listed: ${mfData.listed || 'Not answered'}
+Timeline: ${mfData.timeline || 'Not answered'}
+Condition: ${mfData.condition || 'Not answered'}
+As-Is Value (seller estimate): ${mfData.as_is_value || 'Not answered'}
+Offer Expectation: ${mfData.offer_expectation || 'Not answered'}
+Selling Reason: ${mfData.selling_reason || 'Not answered'}
+How Heard: ${mfData.how_heard || 'Not answered'}
+SMS Consent: ${mfData.sms_consent}
+      `.trim()
+    };
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
       const result = await res.json();
       if (result.success) {
-        form.style.display = 'none';
-        successDiv.style.display = 'block';
+        document.querySelectorAll('.mf-step').forEach(s => s.style.display = 'none');
+        document.getElementById('mf-progress-wrap').style.display = 'none';
+        document.getElementById('mf-disclaimer').style.display = 'none';
+        document.getElementById('mf-success').style.display = 'block';
       } else {
         throw new Error(result.message);
       }
     } catch {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Get My Cash Offer →';
-      errorDiv.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'GET MY CASH OFFER 🏠';
+      alert('Something went wrong. Please call us at (316) 368-3344.');
     }
-  });
+  }
+
+  // Expose to global scope for onclick handlers
+  window.mfNext = mfNext;
+  window.mfBack = mfBack;
+  window.mfChoice = mfChoice;
+  window.mfSubmit = mfSubmit;
 </script>
