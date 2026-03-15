@@ -5,7 +5,6 @@ import Base from '../layouts/Base.astro';
   title="Sell Your House Fast in Wichita KS | Jacob Buys Your House"
   description="Jacob Matlock buys houses for cash in Wichita KS. Fair offers in 24 hours, close in 7 days, no repairs or fees. Call (316) 816-2983."
 >
-  <!-- SCHEMA MARKUP -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -20,8 +19,7 @@ import Base from '../layouts/Base.astro';
       "addressRegion": "KS",
       "addressCountry": "US"
     },
-    "areaServed": ["Wichita", "Derby", "Mulvane", "Haysville", "Andover", "Augusta", "El Dorado"],
-    "priceRange": "Fair Cash Offers",
+    "areaServed": ["Wichita","Derby","Mulvane","Haysville","Andover","Augusta","El Dorado"],
     "openingHours": "Mo-Su 08:00-20:00"
   }
   </script>
@@ -29,130 +27,157 @@ import Base from '../layouts/Base.astro';
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>Sell Your House Fast in Wichita, KS</h1>
-      <p>Jacob Matlock is a local Wichita investor who buys houses for cash — any condition, any situation. Fair offer in 24 hours. Close in as little as 7 days.</p>
-      <a href="tel:3168162983" class="btn-primary">Call (316) 816-2983</a>
-      <a href="/contact" class="btn-secondary">Get a Cash Offer</a>
+      <div class="hero-eyebrow">No Fees. No Repairs. No Hassles.</div>
+      <h1>Sell Your House Fast<br/>in Wichita, KS</h1>
+      <p class="hero-sub">Jacob Matlock pays cash for homes in any condition. Fair offer in 24 hours. Close in as little as 7 days.</p>
+      <div class="hero-cta">
+        <a href="tel:3168162983" class="btn-primary">Call (316) 816-2983</a>
+        <a href="/contact" class="btn-ghost">Get a Cash Offer</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-badge">⭐⭐⭐⭐⭐ Google Reviews</div>
+        <div class="trust-badge">✅ No Fees or Commissions</div>
+        <div class="trust-badge">🏠 Closes in 7 Days</div>
+      </div>
     </div>
   </section>
 
-  <!-- STEPS -->
-  <section class="steps">
-    <div class="container">
+  <!-- PROOF BAR -->
+  <div class="proof-bar">
+    <div class="container proof-inner">
+      <div class="proof-item"><div class="num">24hr</div><div class="label">Cash Offer</div></div>
+      <div class="proof-item"><div class="num">7 Days</div><div class="label">To Close</div></div>
+      <div class="proof-item"><div class="num">$0</div><div class="label">Fees or Commissions</div></div>
+      <div class="proof-item"><div class="num">100%</div><div class="label">As-Is — No Repairs</div></div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <div class="eyebrow">It's Easy</div>
       <h2>How It Works</h2>
+      <p>Our fast, 3-step process makes it easy to sell your home — no stress, no surprises.</p>
       <div class="steps-grid">
         <div class="step">
           <div class="step-num">1</div>
-          <h3>Tell Us About Your House</h3>
-          <p>Call or fill out a short form. Takes about 5 minutes. No obligation.</p>
+          <h3>Call or Submit Your Address</h3>
+          <p>Tell us about your home in under 5 minutes. No obligation whatsoever.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <h3>Get a Fair Cash Offer</h3>
-          <p>We'll assess your property and make a real offer within 24 hours.</p>
+          <p>We assess your property and make a real offer within 24 hours. Based on actual market data.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3>You Pick the Closing Date</h3>
-          <p>Need to close in 7 days? Done. Need 60 days? That works too.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <h3>Walk Away With Cash</h3>
-          <p>No repairs. No fees. No agents. Just cash in your hands.</p>
+          <h3>Pick Your Closing Date</h3>
+          <p>Choose a date that works for you — days or months away. We handle everything.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SITUATIONS -->
+  <!-- ANY REASON / CONDITION / CHALLENGE -->
   <section class="section">
     <div class="container">
-      <h2>We Buy Houses in Any Situation</h2>
-      <p>There's no situation we haven't seen. Whatever's going on with your property — we can help.</p>
-      <div class="situations-grid">
-        <div class="situation-card">
-          <h3>🏠 Inherited Property</h3>
-          <p>Don't want to deal with a house you inherited? We make it simple.</p>
-          <a href="/sell/inherited-house">Learn more →</a>
+      <div class="text-center" style="margin-bottom:0">
+        <div class="eyebrow">We Handle It All</div>
+        <h2>We Buy Houses in Any Situation</h2>
+      </div>
+      <div class="any-grid">
+        <div class="any-card">
+          <h3>Any Reason</h3>
+          <ul>
+            <li>Inherited Properties</li>
+            <li>Facing Foreclosure</li>
+            <li>Divorce</li>
+            <li>Tired Landlord</li>
+            <li>Relocating</li>
+            <li>Downsizing</li>
+            <li>Bankruptcy</li>
+            <li>Health Issues</li>
+          </ul>
         </div>
-        <div class="situation-card">
-          <h3>⚠️ Facing Foreclosure</h3>
-          <p>Stop the process before it's too late. We move fast.</p>
-          <a href="/sell/foreclosure">Learn more →</a>
+        <div class="any-card">
+          <h3>Any Condition</h3>
+          <ul>
+            <li>Major Repairs Needed</li>
+            <li>Fire or Storm Damage</li>
+            <li>Full of Stuff or Trash</li>
+            <li>Problem Tenants</li>
+            <li>Foundation Issues</li>
+            <li>Old & Outdated</li>
+            <li>Hoarder Home</li>
+            <li>Unfinished Construction</li>
+          </ul>
         </div>
-        <div class="situation-card">
-          <h3>⚖️ Going Through Divorce</h3>
-          <p>Sell the house quickly and split the proceeds. Clean break.</p>
-          <a href="/sell/divorce">Learn more →</a>
-        </div>
-        <div class="situation-card">
-          <h3>🔧 House Needs Repairs</h3>
-          <p>Don't spend a dime fixing it. We buy as-is, period.</p>
-          <a href="/sell/as-is">Learn more →</a>
-        </div>
-        <div class="situation-card">
-          <h3>🏢 Tired Landlord</h3>
-          <p>Done with tenants? We buy rental properties with tenants in place.</p>
-          <a href="/sell/rental-property">Learn more →</a>
-        </div>
-        <div class="situation-card">
-          <h3>💸 Behind on Taxes</h3>
-          <p>Tax liens, code violations — we've handled it all before.</p>
-          <a href="/sell/behind-on-taxes">Learn more →</a>
-        </div>
-        <div class="situation-card">
-          <h3>📦 Relocating</h3>
-          <p>Moving for work or family? We close on your timeline.</p>
-          <a href="/sell/relocating">Learn more →</a>
-        </div>
-        <div class="situation-card">
-          <h3>🏚️ Vacant Property</h3>
-          <p>Empty houses cost money every month. We can take it off your hands.</p>
-          <a href="/sell/vacant-house">Learn more →</a>
+        <div class="any-card">
+          <h3>Any Challenge</h3>
+          <ul>
+            <li>Tax Liens</li>
+            <li>Code Violations</li>
+            <li>Title Issues</li>
+            <li>Behind on Mortgage</li>
+            <li>Out of Area Property</li>
+            <li>Large Liens</li>
+            <li>Zoning Issues</li>
+            <li>Family Matters</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center">
+        <div class="eyebrow">The Better Solution</div>
+        <h2>Jacob vs. The Traditional Way</h2>
+        <p>See why thousands of homeowners choose to skip the listing process entirely.</p>
+      </div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="us">Jacob Buys Your House</th>
+            <th class="them">Traditional Sale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Commissions & Fees</td><td><span class="check">✓ None</span></td><td><span class="cross">✗ 5–6%</span></td></tr>
+          <tr><td>Closing Costs</td><td><span class="check">✓ We Pay</span></td><td><span class="cross">✗ 1–2% extra</span></td></tr>
+          <tr><td>Repairs Required</td><td><span class="check">✓ None — As-Is</span></td><td><span class="cross">✗ Often $10k–$40k+</span></td></tr>
+          <tr><td>Time to Close</td><td><span class="check">✓ 7–30 Days</span></td><td><span class="cross">✗ 60–90+ Days</span></td></tr>
+          <tr><td>Showings & Open Houses</td><td><span class="check">✓ None</span></td><td><span class="cross">✗ Weeks of disruption</span></td></tr>
+          <tr><td>Financing Fall-Through Risk</td><td><span class="check">✓ Zero — Cash</span></td><td><span class="cross">✗ Happens often</span></td></tr>
+          <tr><td>You Choose Closing Date</td><td><span class="check">✓ Always</span></td><td><span class="cross">✗ Buyer dictates</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <!-- WHY JACOB -->
-  <section class="section section-alt">
-    <div class="container two-col">
-      <div>
-        <h2>Why Sell to Jacob?</h2>
-        <p>I'm not a national hedge fund or an iBuyer algorithm. I'm Jacob Matlock — I grew up in the Wichita area, I invest here, and I care about this community.</p>
-        <p>I started Pillar Home Buyers because I believe sellers deserve straight answers, a fair price, and a process that doesn't waste their time. No bait-and-switch offers. No last-minute price drops. Just honest business.</p>
-        <p>If my offer doesn't work for you, I'll tell you — and I'll point you toward someone who can actually help.</p>
-        <a href="/about" style="font-weight:700;color:#1a5c3a;">Meet Jacob →</a>
-      </div>
-      <div>
-        <div class="trust-stats" style="background:#1a5c3a;border-radius:12px;padding:40px;color:white;">
-          <div class="trust-stat">
-            <div class="num">3+</div>
-            <div class="label">Years buying in Wichita</div>
-          </div>
-          <div class="trust-stat">
-            <div class="num">24h</div>
-            <div class="label">Cash offer turnaround</div>
-          </div>
-          <div class="trust-stat">
-            <div class="num">7</div>
-            <div class="label">Days to close if needed</div>
-          </div>
-          <div class="trust-stat">
-            <div class="num">$0</div>
-            <div class="label">Fees, commissions, or repairs</div>
-          </div>
-        </div>
-      </div>
+  <section class="section section-dark">
+    <div class="container">
+      <div class="eyebrow">Why Jacob?</div>
+      <h2>A Local Buyer You Can Actually Trust</h2>
+      <p>I'm not a national hedge fund or an algorithm. I'm Jacob Matlock — I grew up in the Derby/Wichita area, I invest here, and I care about this community.</p>
+      <p>I started buying houses because I believe being a good person will have a greater ROI than any other strategy. That means no bait-and-switch offers, no last-minute price drops, and no high-pressure tactics. Just honest business.</p>
+      <p>If my offer doesn't work for your situation, I'll tell you — and I'll point you toward someone who can actually help.</p>
+      <a href="/about" style="color:#f0c040;font-weight:700;font-size:1rem;">Read Jacob's Story →</a>
     </div>
   </section>
 
   <!-- AREAS -->
   <section class="section">
     <div class="container">
-      <h2>Areas We Buy Houses</h2>
-      <p>We buy houses throughout Wichita and the surrounding Sedgwick County area.</p>
+      <div class="text-center">
+        <div class="eyebrow">Service Area</div>
+        <h2>Cities We Buy Houses In</h2>
+        <p>We serve Wichita and all surrounding Sedgwick County communities.</p>
+      </div>
       <div class="areas-grid">
         <a href="/areas/wichita" class="area-card">Wichita</a>
         <a href="/areas/derby" class="area-card">Derby</a>
@@ -171,41 +196,28 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- FAQ -->
-  <section class="faq">
+  <section class="section section-alt">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>How fast can you close?</h3>
-        <p>As fast as 7 days once we agree on a price. We use a local title company and handle all the paperwork. You pick the date that works for you.</p>
+      <div class="text-center">
+        <div class="eyebrow">Questions?</div>
+        <h2>Frequently Asked Questions</h2>
       </div>
-      <div class="faq-item">
-        <h3>Do I need to make repairs or clean the house?</h3>
-        <p>No. We buy houses exactly as they are. Leave whatever you don't want — furniture, trash, belongings. We handle it.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is the cash offer really fair?</h3>
-        <p>We base our offers on real Wichita market data. We won't insult you with a ridiculous number. If our offer doesn't work for you, no hard feelings — we'll tell you straight.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Are there any fees or commissions?</h3>
-        <p>None. You pay zero commissions, zero agent fees, and in most cases zero closing costs. What we offer is what you get.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What types of properties do you buy?</h3>
-        <p>Single family homes, duplexes, multi-family, vacant lots, rental properties — if it's in the Wichita area, we're interested.</p>
-      </div>
-      <div class="faq-item">
-        <h3>My house is in really bad shape. Will you still buy it?</h3>
-        <p>Yes. Foundation issues, roof damage, fire damage, hoarder situations — we've seen it all. Condition doesn't scare us.</p>
+      <div class="faq-grid">
+        <div class="faq-item"><h3>How fast can you close?</h3><p>As fast as 7 days. We use a local Wichita title company and handle all the paperwork. You pick the date.</p></div>
+        <div class="faq-item"><h3>Do I need to make repairs or clean the house?</h3><p>No. We buy as-is. Leave whatever you don't want — we handle it.</p></div>
+        <div class="faq-item"><h3>Is the cash offer really fair?</h3><p>We base offers on real Wichita market data. We won't insult you with a ridiculous number. If it doesn't work for you, no hard feelings.</p></div>
+        <div class="faq-item"><h3>Are there any fees or commissions?</h3><p>None. What we offer is what you get — no deductions at closing.</p></div>
+        <div class="faq-item"><h3>My house is in really bad shape. Will you still buy it?</h3><p>Yes. Foundation issues, fire damage, hoarder situations — condition doesn't scare us.</p></div>
+        <div class="faq-item"><h3>What if I'm not sure if I want to sell yet?</h3><p>Call anyway. No pressure, no obligation. Jacob is happy to talk through your options honestly.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
+  <!-- CTA -->
   <section class="cta-block">
     <div class="container">
       <h2>Ready to Get Your Cash Offer?</h2>
-      <p>No obligation. No pressure. Just a straight answer from a local Wichita buyer.</p>
+      <p>No obligation. No pressure. Just a straight answer from a local Wichita buyer who actually answers his phone.</p>
       <a href="tel:3168162983" class="btn-dark">Call (316) 816-2983</a>
     </div>
   </section>
