@@ -13,13 +13,6 @@ const ACCESS_KEY = "283b2736-f1c9-4f16-ba85-80937d302548";
     overflow: hidden;
   }
 
-  /* ── PROGRESS BAR ── */
-  .mf-progress-wrap { margin-bottom: 28px; }
-  .mf-progress-label { font-size: 12px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; justify-content: space-between; }
-  .mf-progress-label span { color: #3aa1f8; }
-  .mf-progress-bar { background: #e8f5ff; border-radius: 100px; height: 6px; overflow: hidden; }
-  .mf-progress-fill { background: #3aa1f8; height: 100%; border-radius: 100px; transition: width .4s ease; }
-
   /* ── STEPS ── */
   .mf-step { display: none; animation: fadeIn .25s ease; }
   .mf-step.active { display: block; }
@@ -113,17 +106,6 @@ const ACCESS_KEY = "283b2736-f1c9-4f16-ba85-80937d302548";
 </style>
 
 <div class="mf-wrap" id="mf-container">
-
-  <!-- PROGRESS -->
-  <div class="mf-progress-wrap" id="mf-progress-wrap">
-    <div class="mf-progress-label">
-      <span>Step <span id="mf-current-step">1</span> of 9</span>
-      <span id="mf-progress-pct">11%</span>
-    </div>
-    <div class="mf-progress-bar">
-      <div class="mf-progress-fill" id="mf-progress-fill" style="width:11%"></div>
-    </div>
-  </div>
 
   <!-- ══ STEP 1: Phone + Address ══ -->
   <div class="mf-step active" data-step="1">
@@ -291,19 +273,10 @@ const ACCESS_KEY = "283b2736-f1c9-4f16-ba85-80937d302548";
   // Store all form data
   const mfData = {};
 
-  function mfUpdateProgress(step) {
-    const total = 9;
-    const pct = Math.round((step / total) * 100);
-    document.getElementById('mf-current-step').textContent = step;
-    document.getElementById('mf-progress-pct').textContent = pct + '%';
-    document.getElementById('mf-progress-fill').style.width = pct + '%';
-  }
-
   function mfShowStep(step) {
     document.querySelectorAll('.mf-step').forEach(s => s.classList.remove('active'));
     const el = document.querySelector(`[data-step="${step}"]`);
     if (el) el.classList.add('active');
-    mfUpdateProgress(step);
   }
 
   function mfNext(currentStep) {
@@ -406,7 +379,6 @@ SMS Consent: ${mfData.sms_consent}
       const result = await res.json();
       if (result.success) {
         document.querySelectorAll('.mf-step').forEach(s => s.style.display = 'none');
-        document.getElementById('mf-progress-wrap').style.display = 'none';
         document.getElementById('mf-disclaimer').style.display = 'none';
         document.getElementById('mf-success').style.display = 'block';
       } else {
