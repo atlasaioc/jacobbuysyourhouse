@@ -1,75 +1,92 @@
 ---
-import Base from '../../layouts/Base.astro';
+import InnerPage from '../../layouts/InnerPage.astro';
 ---
-<Base
+<InnerPage
   title="We Buy Houses in Haysville, KS | Jacob Buys Your House"
-  description="Selling your house in Haysville, KS? Jacob Matlock pays cash for homes in any condition. Fair offer in 24 hours, close in 7 days. Call (316) 368-3344."
+  description="We buy houses in Haysville, KS for cash. No repairs, no fees, close on your schedule."
+  heroImage="/cities/haysville.jpg"
+  heroTitle="We Buy Houses in Haysville, KS"
+  heroSub="We buy houses in Haysville, KS for cash. No repairs, no fees, close on your schedule."
+  breadcrumb="Areas We Serve"
+  breadcrumbHref="/areas"
 >
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "name": "Jacob Buys Your House",
-    "description": "Cash home buyer serving Haysville, KS and surrounding areas.",
-    "url": "https://jacobbuysyourhouse.com/areas/haysville",
-    "telephone": "+13163683344",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Haysville",
-      "addressRegion": "KS",
-      "postalCode": "67060",
-      "addressCountry": "US"
-    }
-  }
-  </script>
 
-  <section class="hero">
-    <div class="container">
-      <h1>We Buy Houses in Haysville, KS</h1>
-      <p>Jacob Matlock buys homes in Haysville for cash — any condition, any situation. Local buyer, honest offer, fast close.</p>
-      <a href="tel:3163683344" class="btn-primary">Call (316) 368-3344</a>
-      <a href="/contact" class="btn-secondary">Get a Cash Offer</a>
+  <h2>Selling Your Haysville Home Fast</h2>
+  <p>Haysville sits right on the south edge of Wichita. A quiet community with great access to the city — we regularly buy homes throughout Haysville.</p>
+  <p>If you're thinking about selling — whether the property needs work, the situation is complicated, or you just want a fast clean sale — I'm here to help.</p>
+
+  <div class="feature-grid">
+    <div class="feature-box">
+      <div class="icon">⚡</div>
+      <h3>Offer in 24 Hours</h3>
+      <p>Based on real Sedgwick County market data — no lowball guesses.</p>
     </div>
-  </section>
-
-  <div class="container">
-    <div class="content-page">
-      <h2>Selling Your Haysville Home Fast</h2>
-      <p>Haysville is a quiet residential city bordering south Wichita. If you own property here and you're thinking about selling, you have options — and one of them is selling directly to a local cash buyer like me.</p>
-      <p>I buy houses in Haysville on a regular basis. I know the neighborhoods, the price ranges, and the market. When I make you an offer, it's based on real data — not a low-ball guess.</p>
-
-      <h2>Why Haysville Homeowners Choose Jacob</h2>
-      <p>The traditional route — listing with a Realtor, doing repairs, waiting 60-90 days — works great for some people. But it's not for everyone.</p>
-      <p>If you're dealing with a tough situation, a property that needs work, or you just want a fast, clean sale, here's what I offer:</p>
-      <ul>
-        <li>Cash offer within 24 hours</li>
-        <li>No repairs, cleaning, or staging required</li>
-        <li>Close in as little as 7 days — or on your timeline</li>
-        <li>No agent commissions or hidden fees</li>
-        <li>I handle all the paperwork</li>
-      </ul>
-
-      <h2>Common Situations for Haysville Sellers</h2>
-      <p>Homeowners in Haysville reach out to me for all kinds of reasons — inherited properties, divorces, job relocations, tax problems, tired landlords, houses in bad condition. There's no situation I haven't seen.</p>
-      <p>Whatever brought you here, I'll give you a straight answer. If I can help, I will. If the traditional market is actually better for your situation, I'll tell you that too.</p>
-
-      <h2>How It Works</h2>
-      <p><strong>Step 1:</strong> Call me or fill out the form. Takes 5 minutes.</p>
-      <p><strong>Step 2:</strong> I assess your property and send you a cash offer within 24 hours.</p>
-      <p><strong>Step 3:</strong> If you accept, you pick the closing date. We use a local title company and handle everything.</p>
-      <p><strong>Step 4:</strong> You walk away with cash — no repairs, no fees, no hassle.</p>
-
-      <h2>Ready to Talk?</h2>
-      <p>Give me a call or text at <a href="tel:3163683344"><strong>(316) 368-3344</strong></a>. No pressure, no obligation — just a straight conversation about your property.</p>
-      <p>Or visit <a href="https://pillarhomebuyers.com">pillarhomebuyers.com</a> to learn more about how we work.</p>
+    <div class="feature-box">
+      <div class="icon">🗓</div>
+      <h3>Close in 7 Days</h3>
+      <p>Or on your timeline. You pick the date that works for you.</p>
+    </div>
+    <div class="feature-box">
+      <div class="icon">💰</div>
+      <h3>Zero Fees</h3>
+      <p>No agent commissions. No closing costs. What we offer is what you get.</p>
+    </div>
+    <div class="feature-box">
+      <div class="icon">🔨</div>
+      <h3>As-Is Purchase</h3>
+      <p>No repairs, no cleaning, no staging. Leave what you don't want.</p>
     </div>
   </div>
 
-  <section class="cta-block">
-    <div class="container">
-      <h2>Get a Cash Offer on Your Haysville Home</h2>
-      <p>Fair price. Fast close. Local buyer who actually answers his phone.</p>
-      <a href="tel:3163683344" class="btn-dark">Call (316) 368-3344</a>
+  <h2>Why Haysville Homeowners Choose Jacob</h2>
+  <p>The traditional route — listing with a Realtor, making repairs, waiting 60–90 days — works great for some people. But it's not for everyone.</p>
+  <ul>
+    <li>Cash offer within 24 hours of seeing the property</li>
+    <li>No repairs, cleaning, or staging required</li>
+    <li>Close in as little as 7 days — or take your time</li>
+    <li>No agent commissions or hidden fees</li>
+    <li>Local buyer who answers his own phone</li>
+    <li>Any condition, any situation</li>
+  </ul>
+
+  <h2>How It Works</h2>
+  <div class="steps-list">
+    <div class="step-row">
+      <div class="step-circle">1</div>
+      <div class="step-body">
+        <h3>Call or Submit Your Address</h3>
+        <p>Tell us about your Haysville property in under 5 minutes. Zero obligation.</p>
+      </div>
     </div>
-  </section>
-</Base>
+    <div class="step-row">
+      <div class="step-circle">2</div>
+      <div class="step-body">
+        <h3>Receive a Fair Cash Offer</h3>
+        <p>We evaluate your property and deliver a real offer within 24 hours — based on actual market data.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-circle">3</div>
+      <div class="step-body">
+        <h3>Pick Your Closing Date &amp; Get Paid</h3>
+        <p>Choose a date that works for you. We handle all paperwork through a local title company.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Common Situations for Haysville Sellers</h2>
+  <p>Homeowners reach out to us for all kinds of reasons — inherited properties, divorces, relocations, tax problems, tired landlords, houses in bad shape. There's no situation we haven't seen.</p>
+  <ul>
+    <li>Inherited or probate property</li>
+    <li>Behind on mortgage or facing foreclosure</li>
+    <li>Going through a divorce</li>
+    <li>Rental property with problem tenants</li>
+    <li>Needs major repairs you can't afford</li>
+    <li>Need to relocate quickly</li>
+    <li>Tax liens or code violations</li>
+  </ul>
+
+  <h2>Ready to Talk?</h2>
+  <p>Call or text <a href="tel:3163683344"><strong>(316) 368-3344</strong></a>. No pressure, no obligation — just a straight conversation about your property and what makes sense for your situation.</p>
+
+</InnerPage>
