@@ -1,39 +1,118 @@
 ---
-import Base from '../layouts/Base.astro';
+import InnerPage from '../layouts/InnerPage.astro';
 ---
-<Base
-  title="Areas We Buy Houses | Wichita KS and Surrounding Cities"
-  description="Jacob buys houses throughout Wichita and surrounding Sedgwick County cities including Derby, Mulvane, Haysville, Andover, Augusta, and El Dorado."
+<InnerPage
+  title="Areas We Serve | Wichita KS Cash Home Buyer"
+  description="Jacob buys houses throughout Wichita and all surrounding communities — Derby, Mulvane, Haysville, Andover, Augusta, El Dorado, and more."
+  heroImage="/cities/wichita.jpg"
+  heroTitle="Areas We Serve"
+  heroSub="We buy houses throughout Wichita and all surrounding Sedgwick County communities. Any condition, any situation."
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Areas We Serve</h1>
-      <p>We buy houses throughout Wichita and all surrounding communities in Sedgwick County and beyond.</p>
-      <a href="tel:3163683344" class="btn-primary">Call (316) 368-3344</a>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <h2>Cities We Buy Houses In</h2>
-      <div class="areas-grid">
-        <a href="/areas/wichita" class="area-card">Wichita</a>
-        <a href="/areas/derby" class="area-card">Derby</a>
-        <a href="/areas/mulvane" class="area-card">Mulvane</a>
-        <a href="/areas/haysville" class="area-card">Haysville</a>
-        <a href="/areas/andover" class="area-card">Andover</a>
-        <a href="/areas/augusta" class="area-card">Augusta</a>
-        <a href="/areas/el-dorado" class="area-card">El Dorado</a>
-        <a href="/areas/park-city" class="area-card">Park City</a>
-        <a href="/areas/bel-aire" class="area-card">Bel Aire</a>
-        <a href="/areas/valley-center" class="area-card">Valley Center</a>
-        <a href="/areas/goddard" class="area-card">Goddard</a>
-        <a href="/areas/maize" class="area-card">Maize</a>
-      </div>
-      <div class="content-page">
-        <h2>Not Seeing Your City?</h2>
-        <p>We serve all of Sedgwick County and the surrounding area. If your property is within about 30 miles of Wichita, there's a good chance we buy there. Call us and find out.</p>
-        <p><a href="tel:3163683344"><strong>(316) 368-3344</strong></a></p>
-      </div>
-    </div>
-  </section>
-</Base>
+
+  <style>
+    .city-index-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .city-index-card {
+      display: block; text-decoration: none;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid #e0e8f0;
+      box-shadow: 0 2px 12px rgba(58,161,248,.08);
+      transition: all .2s;
+    }
+    .city-index-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(58,161,248,.18); }
+    .city-img-wrap { height: 140px; overflow: hidden; }
+    .city-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .city-index-card:hover .city-img-wrap img { transform: scale(1.05); }
+    .city-name { background: white; padding: 14px 16px; font-weight: 700; font-size: 15px; color: #1a82d8; display: flex; justify-content: space-between; align-items: center; }
+    .city-name span { color: #e87122; font-size: 14px; }
+    @media(max-width:700px){ .city-index-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:440px){ .city-index-grid { grid-template-columns: 1fr; } }
+
+    .situation-index-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: 28px 0;
+    }
+    .sit-card {
+      display: flex; align-items: center; gap: 14px;
+      background: #f3f5f8; border: 1px solid #e0e8f0;
+      border-radius: 12px; padding: 18px 20px;
+      text-decoration: none; transition: all .15s;
+    }
+    .sit-card:hover { background: #e8f5ff; border-color: #cce8ff; transform: translateX(3px); }
+    .sit-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .sit-text h3 { font-size: 14.5px; font-weight: 700; color: #1a82d8; margin-bottom: 2px; }
+    .sit-text p { font-size: 13px; color: #666; margin: 0; }
+    @media(max-width:600px){ .situation-index-grid { grid-template-columns: 1fr; } }
+  </style>
+
+  <h2>Cities We Buy Houses In</h2>
+  <p>We serve Wichita and all surrounding communities. If you're not sure whether your area qualifies, call — if it's outside our range, we'll tell you upfront.</p>
+
+  <div class="city-index-grid">
+    <a href="/areas/wichita" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/wichita.jpg" alt="Wichita KS houses" loading="lazy"/></div>
+      <div class="city-name">Wichita <span>View →</span></div>
+    </a>
+    <a href="/areas/derby" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/derby.jpg" alt="Derby KS houses" loading="lazy"/></div>
+      <div class="city-name">Derby <span>View →</span></div>
+    </a>
+    <a href="/areas/andover" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/andover.jpg" alt="Andover KS houses" loading="lazy"/></div>
+      <div class="city-name">Andover <span>View →</span></div>
+    </a>
+    <a href="/areas/haysville" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/haysville.jpg" alt="Haysville KS houses" loading="lazy"/></div>
+      <div class="city-name">Haysville <span>View →</span></div>
+    </a>
+    <a href="/areas/mulvane" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/mulvane.jpg" alt="Mulvane KS houses" loading="lazy"/></div>
+      <div class="city-name">Mulvane <span>View →</span></div>
+    </a>
+    <a href="/areas/augusta" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/augusta.jpg" alt="Augusta KS houses" loading="lazy"/></div>
+      <div class="city-name">Augusta <span>View →</span></div>
+    </a>
+    <a href="/areas/el-dorado" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/el-dorado.jpg" alt="El Dorado KS houses" loading="lazy"/></div>
+      <div class="city-name">El Dorado <span>View →</span></div>
+    </a>
+    <a href="/areas/park-city" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/park-city.jpg" alt="Park City KS houses" loading="lazy"/></div>
+      <div class="city-name">Park City <span>View →</span></div>
+    </a>
+    <a href="/areas/bel-aire" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/bel-aire.jpg" alt="Bel Aire KS houses" loading="lazy"/></div>
+      <div class="city-name">Bel Aire <span>View →</span></div>
+    </a>
+    <a href="/areas/valley-center" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/valley-center.jpg" alt="Valley Center KS houses" loading="lazy"/></div>
+      <div class="city-name">Valley Center <span>View →</span></div>
+    </a>
+    <a href="/areas/goddard" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/goddard.jpg" alt="Goddard KS houses" loading="lazy"/></div>
+      <div class="city-name">Goddard <span>View →</span></div>
+    </a>
+    <a href="/areas/maize" class="city-index-card">
+      <div class="city-img-wrap"><img src="/cities/maize.jpg" alt="Maize KS houses" loading="lazy"/></div>
+      <div class="city-name">Maize <span>View →</span></div>
+    </a>
+  </div>
+
+  <h2>Situations We Help With</h2>
+  <p>No matter what city you're in, we handle all kinds of situations.</p>
+  <div class="situation-index-grid">
+    <a href="/sell/inherited-house" class="sit-card"><span class="sit-icon">📋</span><div class="sit-text"><h3>Inherited Property</h3><p>Estate sales, probate, out-of-state heirs</p></div></a>
+    <a href="/sell/foreclosure" class="sit-card"><span class="sit-icon">🏚</span><div class="sit-text"><h3>Facing Foreclosure</h3><p>Stop the clock before the bank acts</p></div></a>
+    <a href="/sell/divorce" class="sit-card"><span class="sit-icon">⚖️</span><div class="sit-text"><h3>Divorce</h3><p>Simple sale both parties can agree on</p></div></a>
+    <a href="/sell/as-is" class="sit-card"><span class="sit-icon">🔨</span><div class="sit-text"><h3>Sell As-Is</h3><p>No repairs, no cleaning, no prep</p></div></a>
+    <a href="/sell/rental-property" class="sit-card"><span class="sit-icon">🔑</span><div class="sit-text"><h3>Tired Landlord</h3><p>Tenant-occupied or vacant — we buy both</p></div></a>
+    <a href="/sell/behind-on-taxes" class="sit-card"><span class="sit-icon">📃</span><div class="sit-text"><h3>Behind on Taxes</h3><p>Liens paid off at closing — no cash upfront</p></div></a>
+    <a href="/sell/relocating" class="sit-card"><span class="sit-icon">✈️</span><div class="sit-text"><h3>Relocating</h3><p>Close fast before or after your move</p></div></a>
+    <a href="/sell/probate" class="sit-card"><span class="sit-icon">📜</span><div class="sit-text"><h3>Probate</h3><p>We work with estate attorneys</p></div></a>
+  </div>
+
+</InnerPage>

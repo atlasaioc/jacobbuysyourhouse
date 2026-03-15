@@ -1,31 +1,102 @@
 ---
-import Base from '../layouts/Base.astro';
+import InnerPage from '../layouts/InnerPage.astro';
 ---
-<Base
+<InnerPage
   title="Sell Your House Fast | Any Situation | Wichita KS"
-  description="Inherited property, foreclosure, divorce, bad condition, tax problems — Jacob buys houses in any situation. Fair cash offer in 24 hours."
+  description="Inherited property, foreclosure, divorce, bad condition, tax problems — Jacob buys houses in any situation in Wichita KS. Fair cash offer in 24 hours."
+  heroImage="/situations/default.jpg"
+  heroTitle="We Buy Houses in Any Situation"
+  heroSub="Whatever is going on with your property — there's probably a path forward. Here are the situations we handle every day."
 >
-  <section class="hero">
-    <div class="container">
-      <h1>We Buy Houses in Any Situation</h1>
-      <p>Whatever is going on with your property — there's probably a path forward. Here are the situations we deal with every day.</p>
-      <a href="tel:3163683344" class="btn-primary">Call (316) 368-3344</a>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="situations-grid">
-        <div class="situation-card"><h3>🏠 Inherited Property</h3><a href="/sell/inherited-house">Learn more →</a></div>
-        <div class="situation-card"><h3>⚠️ Facing Foreclosure</h3><a href="/sell/foreclosure">Learn more →</a></div>
-        <div class="situation-card"><h3>⚖️ Going Through Divorce</h3><a href="/sell/divorce">Learn more →</a></div>
-        <div class="situation-card"><h3>🔧 Selling As-Is</h3><a href="/sell/as-is">Learn more →</a></div>
-        <div class="situation-card"><h3>🏢 Tired Landlord</h3><a href="/sell/rental-property">Learn more →</a></div>
-        <div class="situation-card"><h3>💸 Behind on Taxes</h3><a href="/sell/behind-on-taxes">Learn more →</a></div>
-        <div class="situation-card"><h3>📦 Relocating</h3><a href="/sell/relocating">Learn more →</a></div>
-        <div class="situation-card"><h3>🏚️ Vacant Property</h3><a href="/sell/vacant-house">Learn more →</a></div>
-        <div class="situation-card"><h3>📋 Probate Sale</h3><a href="/sell/probate">Learn more →</a></div>
-        <div class="situation-card"><h3>🔨 Bad Condition</h3><a href="/sell/bad-condition">Learn more →</a></div>
-      </div>
-    </div>
-  </section>
-</Base>
+
+  <style>
+    .situation-full-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin: 28px 0;
+    }
+    .sit-full-card {
+      display: block; text-decoration: none;
+      background: white; border: 1px solid #e0e8f0;
+      border-radius: 16px; padding: 24px 22px;
+      border-left: 4px solid #3aa1f8;
+      transition: all .2s;
+      box-shadow: 0 2px 10px rgba(58,161,248,.07);
+    }
+    .sit-full-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(58,161,248,.15); border-left-color: #e87122; }
+    .sit-full-card .s-icon { font-size: 2rem; margin-bottom: 12px; }
+    .sit-full-card h3 { font-size: 1rem; font-weight: 800; color: #1a82d8; margin-bottom: 6px; }
+    .sit-full-card p { font-size: 14px; color: #555; line-height: 1.55; margin: 0 0 12px; }
+    .sit-full-card .learn { font-size: 13.5px; font-weight: 700; color: #e87122; }
+    @media(max-width:600px){ .situation-full-grid { grid-template-columns: 1fr; } }
+  </style>
+
+  <h2>Every Situation is Solvable</h2>
+  <p>There's no property or situation that automatically disqualifies you from getting a fair cash offer. We've bought homes in all of these circumstances — and many more. Click any situation below to learn more about how we handle it specifically.</p>
+
+  <div class="situation-full-grid">
+    <a href="/sell/inherited-house" class="sit-full-card">
+      <div class="s-icon">📋</div>
+      <h3>Inherited Property</h3>
+      <p>Dealing with an estate? We work with probate attorneys, buy in any condition, and give heirs a clean, fast resolution.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/foreclosure" class="sit-full-card">
+      <div class="s-icon">🏚</div>
+      <h3>Facing Foreclosure</h3>
+      <p>The clock is ticking. A fast cash sale can stop foreclosure before it damages your credit for years.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/divorce" class="sit-full-card">
+      <div class="s-icon">⚖️</div>
+      <h3>Divorce</h3>
+      <p>A simple, fast cash sale eliminates months of uncertainty and gives both parties a clear number to divide.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/as-is" class="sit-full-card">
+      <div class="s-icon">🔨</div>
+      <h3>Sell As-Is</h3>
+      <p>Don't spend money on repairs. Don't waste time with contractors. Sell exactly as the house sits right now.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/rental-property" class="sit-full-card">
+      <div class="s-icon">🔑</div>
+      <h3>Tired Landlord</h3>
+      <p>Done with tenants, maintenance calls, and property management? We buy rental properties — occupied or vacant.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/behind-on-taxes" class="sit-full-card">
+      <div class="s-icon">📃</div>
+      <h3>Behind on Taxes</h3>
+      <p>Tax liens and delinquencies can be paid off at closing. You don't need to come up with cash upfront.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/relocating" class="sit-full-card">
+      <div class="s-icon">✈️</div>
+      <h3>Relocating</h3>
+      <p>Job transfer or fresh start? Don't drag a property behind you. Close fast and move on clean.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/vacant-house" class="sit-full-card">
+      <div class="s-icon">🏠</div>
+      <h3>Vacant Property</h3>
+      <p>Empty houses drain money every month — taxes, insurance, deterioration. Stop the bleed with a fast sale.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/probate" class="sit-full-card">
+      <div class="s-icon">📜</div>
+      <h3>Probate Sale</h3>
+      <p>Navigating probate while trying to sell is stressful. We fit into the court process and keep it simple.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+    <a href="/sell/bad-condition" class="sit-full-card">
+      <div class="s-icon">🔧</div>
+      <h3>Bad Condition</h3>
+      <p>Foundation issues, fire damage, hoarder homes, unfinished construction — there's no condition that scares us off.</p>
+      <span class="learn">Learn more →</span>
+    </a>
+  </div>
+
+  <h2>Not Sure Which Applies to You?</h2>
+  <p>Call anyway. Explain your situation and Jacob will walk you through your options honestly — even if the best answer turns out to be something other than a cash sale.</p>
+  <p><a href="tel:3163683344"><strong>(316) 368-3344</strong></a> — No pressure, no obligation.</p>
+
+</InnerPage>

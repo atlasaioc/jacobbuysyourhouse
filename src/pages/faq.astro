@@ -1,33 +1,93 @@
 ---
-import Base from '../layouts/Base.astro';
+import InnerPage from '../layouts/InnerPage.astro';
 ---
-<Base
-  title="FAQ | Selling Your House to Jacob in Wichita KS"
-  description="Common questions about selling your house for cash in Wichita KS. How fast can we close? Are there fees? What condition does the house need to be in?"
+<InnerPage
+  title="FAQ | Selling Your House for Cash in Wichita KS"
+  description="Common questions about selling your house for cash in Wichita KS. How fast? Are there fees? What condition does it need to be in? Straight answers."
+  heroImage="/situations/faq.jpg"
+  heroTitle="Frequently Asked Questions"
+  heroSub="Straight answers to the questions we hear most. No fluff."
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Frequently Asked Questions</h1>
-      <p>Straight answers to the questions we hear most.</p>
-    </div>
-  </section>
-  <section class="faq">
-    <div class="container">
-      <div class="faq-item"><h3>How fast can you close?</h3><p>As fast as 7 days. We use a local Wichita title company. Once you accept the offer, you pick the closing date.</p></div>
-      <div class="faq-item"><h3>Do I need to clean or repair anything?</h3><p>No. We buy houses as-is. Leave whatever you don't want — we handle it.</p></div>
-      <div class="faq-item"><h3>How do you determine your offer?</h3><p>We look at the property, recent sales in the neighborhood, condition, and what it will take to renovate. We build our number from real data, not guesswork.</p></div>
-      <div class="faq-item"><h3>Are there any fees?</h3><p>None. No commissions, no agent fees, no closing costs in most cases.</p></div>
-      <div class="faq-item"><h3>What if I owe more than the house is worth?</h3><p>Call us anyway. We've worked through short sales and other complex situations before. We'll tell you honestly what options exist.</p></div>
-      <div class="faq-item"><h3>Is the process really that simple?</h3><p>Yes. Call, get an offer, pick a closing date, get paid. Most sellers are surprised at how straightforward it is.</p></div>
-      <div class="faq-item"><h3>What areas do you buy in?</h3><p>All of Wichita and surrounding communities — Derby, Mulvane, Haysville, Andover, Augusta, El Dorado, Park City, Bel Aire, Valley Center, Goddard, Maize, and more.</p></div>
-      <div class="faq-item"><h3>What types of properties do you buy?</h3><p>Single family homes, duplexes, multi-family, vacant lots, rental properties, inherited homes, and more.</p></div>
-    </div>
-  </section>
-  <section class="cta-block">
-    <div class="container">
-      <h2>Still Have Questions?</h2>
-      <p>Call Jacob directly. He answers his own phone.</p>
-      <a href="tel:3163683344" class="btn-dark">Call (316) 368-3344</a>
-    </div>
-  </section>
-</Base>
+
+  <style>
+    .faq-block { margin-bottom: 8px; }
+    .faq-block h3 { font-size: 1rem; font-weight: 700; color: #0d5fa0; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+    .faq-block h3::before { content: "Q"; background: #3aa1f8; color: white; font-size: 11px; font-weight: 900; padding: 2px 7px; border-radius: 4px; margin-top: 1px; flex-shrink: 0; }
+    .faq-block p { font-size: 15.5px; color: #444; line-height: 1.75; padding-left: 26px; margin: 0; }
+    .faq-divider { border: none; border-top: 1px solid #e0e8f0; margin: 20px 0; }
+  </style>
+
+  <h2>The Process</h2>
+
+  <div class="faq-block">
+    <h3>How fast can you close?</h3>
+    <p>As fast as 7 days. We use a local Wichita title company and handle all the paperwork. Once you accept the offer, you pick the closing date.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>How does the offer process work?</h3>
+    <p>You call or fill out the form. We ask a few questions and assess the property — sometimes in person, sometimes remotely. We deliver a cash offer within 24 hours and walk you through how we got there. No pressure to accept.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>Is the process really that simple?</h3>
+    <p>Yes. Call, get an offer, pick a closing date, get paid. Most sellers are surprised at how straightforward it is. There are no open houses, no inspections, no waiting on buyer financing, and no last-minute surprises.</p>
+  </div>
+
+  <h2>The Offer</h2>
+
+  <div class="faq-block">
+    <h3>How do you determine your offer?</h3>
+    <p>We look at the property's condition, recent comparable sales in the neighborhood, and what it will take to renovate and resell. We build our number from real data — not a formula that spits out the lowest number possible.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>Will the offer be lower than retail market value?</h3>
+    <p>Typically, yes — and we're upfront about that. The trade-off is speed, certainty, and zero costs on your end. When you factor in agent commissions (5–6%), repair costs, carrying costs during a 60–90 day listing, and deal fall-through risk, a fair cash offer often puts more money in your pocket than you'd expect.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>What if I owe more than the house is worth?</h3>
+    <p>Call us anyway. We've worked through short sales and other complex situations. We'll tell you honestly what options exist.</p>
+  </div>
+
+  <h2>Condition &amp; Fees</h2>
+
+  <div class="faq-block">
+    <h3>Do I need to make repairs or clean the house?</h3>
+    <p>No. We buy as-is. Leave furniture, junk, belongings — whatever you don't want. We handle it after closing.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>Are there any fees or commissions?</h3>
+    <p>None. No agent commissions, no closing costs, no surprise deductions. What we offer is what you receive.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>My house is in really bad shape. Will you still buy it?</h3>
+    <p>Yes. Foundation problems, fire damage, hoarder situations, unfinished construction — condition doesn't scare us. We've seen it all.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>What if there are liens or tax problems on the property?</h3>
+    <p>We can often still purchase. Outstanding liens and tax delinquencies are typically paid off at closing through the title company — you don't need to come up with cash upfront.</p>
+  </div>
+
+  <h2>Service Area &amp; Property Types</h2>
+
+  <div class="faq-block">
+    <h3>What areas do you buy in?</h3>
+    <p>Wichita and all surrounding communities — Derby, Mulvane, Haysville, Andover, Augusta, El Dorado, Park City, Bel Aire, Valley Center, Goddard, Maize, and more. Not sure if you're in our range? Just call.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>What types of properties do you buy?</h3>
+    <p>Single family homes, duplexes, multi-family properties, vacant lots, rental properties, inherited homes, and more. If you're not sure, just ask.</p>
+  </div>
+  <hr class="faq-divider"/>
+  <div class="faq-block">
+    <h3>I'm not sure I want to sell. Should I still call?</h3>
+    <p>Absolutely. No pressure, no obligation. If you want to understand what your options are, Jacob will walk through them with you honestly — even if the answer is that listing with an agent makes more sense.</p>
+  </div>
+
+</InnerPage>

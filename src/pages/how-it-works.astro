@@ -1,48 +1,84 @@
 ---
-import Base from '../layouts/Base.astro';
+import InnerPage from '../layouts/InnerPage.astro';
 ---
-<Base
+<InnerPage
   title="How It Works | Sell Your House Fast in Wichita KS"
-  description="Selling your house to Jacob is simple: get an offer in 24 hours, pick your closing date, walk away with cash. No repairs, no fees, no hassle."
+  description="Selling your house to Jacob is simple: get a fair cash offer in 24 hours, pick your closing date, walk away with cash. No repairs, no fees, no hassle."
+  heroImage="/situations/how-it-works.jpg"
+  heroTitle="How It Works"
+  heroSub="Three steps. No surprises. We handle the paperwork so you can focus on what's next."
 >
-  <section class="hero">
-    <div class="container">
-      <h1>How Selling to Jacob Works</h1>
-      <p>Simple. Fast. No surprises.</p>
+
+  <h2>It Really Is This Simple</h2>
+  <p>We've cut every unnecessary step out of the home selling process. No open houses, no inspections, no waiting on buyer financing, no last-minute surprises at closing. Just a straightforward transaction between you and a local buyer.</p>
+
+  <div class="feature-grid">
+    <div class="feature-box">
+      <div class="icon">⚡</div>
+      <h3>Offer in 24 Hours</h3>
+      <p>Based on real Wichita market data — not a random low-ball number.</p>
     </div>
-  </section>
-  <div class="container">
-    <div class="content-page">
-      <h2>Step 1: Tell Us About Your Property</h2>
-      <p>Call or text (316) 368-3344, or fill out the short form on this site. We'll ask a few basic questions about the property — address, condition, your situation. Takes about 5 minutes.</p>
-
-      <h2>Step 2: We Assess and Make an Offer</h2>
-      <p>We'll look at your property (sometimes in person, sometimes we can do it remotely) and make you a cash offer within 24 hours. The offer is based on real Wichita market data — not a random low-ball number.</p>
-
-      <h2>Step 3: You Decide</h2>
-      <p>No pressure. Take the offer or don't. If you want to think about it, that's fine. If you want to understand how we arrived at the number, Jacob will walk you through it.</p>
-
-      <h2>Step 4: Pick Your Closing Date</h2>
-      <p>If you accept, you choose the closing date. Need to close in 7 days? We can do that. Need 45 days to get things organized? That works too. We use a local Wichita title company and handle all the paperwork.</p>
-
-      <h2>Step 5: Walk Away With Cash</h2>
-      <p>On closing day, you sign the paperwork and walk away with your money. No repairs made. No cleaning done. No fees paid. Just done.</p>
-
-      <h2>What You'll Never Deal With</h2>
-      <ul>
-        <li>Agent commissions (typically 5-6% of the sale price)</li>
-        <li>Repair requests from buyers</li>
-        <li>Open houses and strangers walking through your home</li>
-        <li>Deals falling through because the buyer's financing collapsed</li>
-        <li>Months of waiting and uncertainty</li>
-      </ul>
+    <div class="feature-box">
+      <div class="icon">🗓</div>
+      <h3>You Pick the Date</h3>
+      <p>Close in 7 days or take 60 days — your schedule, not ours.</p>
+    </div>
+    <div class="feature-box">
+      <div class="icon">💰</div>
+      <h3>Zero Fees</h3>
+      <p>No agent commissions, no closing costs. What we offer is what you receive.</p>
+    </div>
+    <div class="feature-box">
+      <div class="icon">🔨</div>
+      <h3>As-Is Purchase</h3>
+      <p>Don't repair, clean, or stage a thing. Leave whatever you don't want.</p>
     </div>
   </div>
-  <section class="cta-block">
-    <div class="container">
-      <h2>Ready to Start?</h2>
-      <p>Call Jacob today. No obligation, no pressure.</p>
-      <a href="tel:3163683344" class="btn-dark">Call (316) 368-3344</a>
+
+  <h2>Step-by-Step Process</h2>
+  <div class="steps-list">
+    <div class="step-row">
+      <div class="step-circle">1</div>
+      <div class="step-body">
+        <h3>Tell Us About Your Property</h3>
+        <p>Call or text <a href="tel:3163683344">(316) 368-3344</a> or fill out the form on this site. We'll ask a few basic questions about the address, condition, and your situation. Takes about 5 minutes. Zero obligation.</p>
+      </div>
     </div>
-  </section>
-</Base>
+    <div class="step-row">
+      <div class="step-circle">2</div>
+      <div class="step-body">
+        <h3>We Assess and Make You an Offer</h3>
+        <p>We'll evaluate the property — sometimes in person, sometimes remotely — and make you a real cash offer within 24 hours. The number is based on actual Wichita market comps and the condition of the home. We'll walk you through how we got there.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-circle">3</div>
+      <div class="step-body">
+        <h3>You Decide — No Pressure</h3>
+        <p>Take the offer, decline it, or ask questions. There's no pressure and no expiration clock running. If you want to compare it to listing with an agent, that's a completely reasonable thing to do. We'll be here when you're ready.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-circle">4</div>
+      <div class="step-body">
+        <h3>Pick Your Closing Date</h3>
+        <p>Once you accept, you choose the closing date. Need 7 days? Done. Need 45 days to get things organized? Also fine. We use a local Wichita title company and handle all paperwork.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-circle">5</div>
+      <div class="step-body">
+        <h3>Walk Away With Cash</h3>
+        <p>On closing day, you sign the paperwork and receive your funds. No repairs made. No cleaning done. No fees paid. Just done — and on to whatever comes next for you.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>The Honest Trade-Off</h2>
+  <p>A cash offer will typically be below full retail market value. That's the trade-off for speed, certainty, and zero prep costs. But when you add up agent commissions (5–6%), repair costs, carrying costs during 60–90 days on market, and the risk of a deal falling through — a fair cash offer often puts more money in your pocket than you'd expect.</p>
+  <p>We'll always be straight with you. If listing with a Realtor is genuinely the better path for your situation, we'll tell you that.</p>
+
+  <h2>Questions?</h2>
+  <p>Check out our <a href="/faq">FAQ page</a> or call Jacob directly at <a href="tel:3163683344"><strong>(316) 368-3344</strong></a>. He answers his own phone.</p>
+
+</InnerPage>
