@@ -21,13 +21,26 @@ import LeadForm from '../components/LeadForm.astro';
 
   <style>
 
-    /* ─── HERO 2-COLUMN LAYOUT ─── */
-    .hero { min-height: auto; padding: 60px 0; }
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--blue);
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -40%; right: -15%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
     .hero-layout {
       display: grid;
-      grid-template-columns: 1fr 480px;
-      gap: 48px;
+      grid-template-columns: 1fr 460px;
+      gap: 52px;
       align-items: center;
+      position: relative; z-index: 2;
     }
     .hero-left { color: white; }
     .hero-eyebrow {
@@ -37,131 +50,38 @@ import LeadForm from '../components/LeadForm.astro';
       color: white; font-size: 12px; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       padding: 7px 20px; border-radius: 100px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
       font-weight: 900; line-height: 1.1;
       margin-bottom: 16px; letter-spacing: -1.5px; color: white;
     }
-    .hero-sub { font-size: 17px; color: rgba(255,255,255,.9); margin-bottom: 20px; line-height: 1.65; }
-    .hero-phone-line {
-      font-size: 16px; font-weight: 600; color: rgba(255,255,255,.85);
-      margin-bottom: 28px;
+    .hero-sub {
+      font-size: 17px; color: rgba(255,255,255,.9);
+      margin-bottom: 20px; line-height: 1.65;
     }
-    .hero-phone-line a { color: #f5c842; font-weight: 800; font-size: 1.1rem; text-decoration: none; }
+    .hero-phone-line {
+      font-size: 15px; font-weight: 600;
+      color: rgba(255,255,255,.8); margin-bottom: 28px;
+    }
+    .hero-phone-line a {
+      color: #ffd060; font-weight: 800; font-size: 1.15rem;
+      text-decoration: none;
+    }
     .hero-phone-line a:hover { color: white; }
-    .hero-right { }
-
+    .trust-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .trust-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      color: white; font-size: 12px; font-weight: 600;
+      padding: 7px 14px; border-radius: 100px;
+    }
     @media(max-width: 960px) {
       .hero-layout { grid-template-columns: 1fr; gap: 32px; }
       .hero-left { text-align: center; }
       .trust-row { justify-content: center; }
-    }
-
-    /* ─── OLD HERO (kept for reference) ─── */
-    .hero-old {
-      background: #3aa1f8;
-      min-height: 580px;
-      display: flex;
-      align-items: center;
-      padding: 80px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    /* subtle radial glow like eric's site */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -15%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(26,130,216,.5) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 2; color: white; text-align: center; }
-    .hero-eyebrow {
-      display: inline-block;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.3);
-      color: white;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 7px 20px; border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: clamp(2.6rem, 5.5vw, 4rem);
-      font-weight: 900; line-height: 1.1;
-      margin-bottom: 16px;
-      letter-spacing: -1.5px;
-      color: white;
-    }
-    .hero-sub {
-      font-size: 19px;
-      color: rgba(255,255,255,.92);
-      margin-bottom: 16px;
-      max-width: 580px;
-      margin-left: auto; margin-right: auto;
-      line-height: 1.6;
-    }
-    .hero-tagline {
-      font-size: 15px;
-      color: rgba(255,255,255,.8);
-      margin-bottom: 40px;
-      font-weight: 600;
-      letter-spacing: .3px;
-    }
-    .hero-tagline strong { color: white; }
-    .hero-cta {
-      display: flex; gap: 14px; justify-content: center;
-      flex-wrap: wrap; margin-bottom: 48px;
-    }
-    .btn-hero-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--orange); color: white;
-      font-weight: 800; font-size: 17px;
-      padding: 18px 44px; border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 6px 24px rgba(232,113,34,.55);
-      transition: all .2s;
-      white-space: nowrap;
-    }
-    .btn-hero-primary:hover { background: var(--orange-dark); color: white; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,113,34,.65); }
-    .btn-hero-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,.16);
-      border: 2px solid rgba(255,255,255,.5);
-      color: white; font-weight: 600; font-size: 16px;
-      padding: 16px 36px; border-radius: 8px;
-      text-decoration: none; transition: all .2s;
-      white-space: nowrap;
-    }
-    .btn-hero-secondary:hover { background: rgba(255,255,255,.28); color: white; }
-    .hero-phone {
-      font-size: 20px; font-weight: 800; color: white;
-      letter-spacing: .3px; margin-bottom: 36px;
-    }
-    .hero-phone a { color: var(--orange); text-decoration: none; }
-    .hero-phone a:hover { color: #ffd0a0; }
-    .trust-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .trust-chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.25);
-      color: white; font-size: 13px; font-weight: 600;
-      padding: 8px 16px; border-radius: 100px;
     }
 
     /* ─── STATS BAR ─── */
