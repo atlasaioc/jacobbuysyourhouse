@@ -2,7 +2,7 @@
 import InnerPage from '../../layouts/InnerPage.astro';
 ---
 <InnerPage
-  title="Sell a Probate Property in Wichita, KS | Jacob Buys Your House"
+  title="Sell a Probate Property in Wichita KS | Cash Offer"
   description="Navigating probate while trying to sell a property is stressful. We work with estate attorneys and executors to make the process smooth."
   heroImage="/situations/probate.jpg"
   heroTitle="Sell a Probate Property in Wichita, KS"
@@ -80,4 +80,49 @@ import InnerPage from '../../layouts/InnerPage.astro';
   <h2>Ready to Move Forward?</h2>
   <p>Call or text <a href="tel:3163683344"><strong>(316) 368-3344</strong></a>. No pressure, no obligation — just a real conversation about your options.</p>
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://jacobbuysyourhouse.com/sell/probate/#business",
+        "name": "Jacob Buys Your House",
+        "url": "https://jacobbuysyourhouse.com/sell/probate",
+        "telephone": "+13163683344",
+        "description": "Need to sell a probate property in Wichita KS? We work with estates and attorneys to buy probate houses fast for cash.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wichita",
+          "addressRegion": "KS",
+          "postalCode": "67202",
+          "addressCountry": "US"
+        },
+        "parentOrganization": {
+          "@id": "https://jacobbuysyourhouse.com/#business"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How fast can I sell my house in Wichita if sell probate property?",
+            "acceptedAnswer": {"@type": "Answer", "text": "We can close in as little as 7 days. Submit your address or call (316) 368-3344 and we'll have a cash offer to you within 24 hours."}
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to make repairs before selling?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. We buy houses as-is in any condition. No repairs, no cleaning, no staging required."}
+          },
+          {
+            "@type": "Question",
+            "name": "Are there any fees or commissions?",
+            "acceptedAnswer": {"@type": "Answer", "text": "None. No commissions, no agent fees, no closing costs. Our offer is what you walk away with."}
+          }
+        ]
+      }
+    ]
+  }
+</script>
 </InnerPage>

@@ -3,7 +3,7 @@ import InnerPage from '../../layouts/InnerPage.astro';
 ---
 <InnerPage
   title="We Buy Houses in Valley Center, KS | Jacob Buys Your House"
-  description="Sell your Valley Center, KS home fast. Cash offers in 24 hours, close in 7 days."
+  description="Sell your house fast for cash in Valley Center, KS. Fair cash offer in 24 hours from a local buyer. No repairs, no commissions, close in 7 days."
   heroImage="/cities/valley-center.jpg"
   heroTitle="We Buy Houses in Valley Center, KS"
   heroSub="Sell your Valley Center, KS home fast. Cash offers in 24 hours, close in 7 days."
@@ -89,4 +89,59 @@ import InnerPage from '../../layouts/InnerPage.astro';
   <h2>Ready to Talk?</h2>
   <p>Call or text <a href="tel:3163683344"><strong>(316) 368-3344</strong></a>. No pressure, no obligation — just a straight conversation about your property and what makes sense for your situation.</p>
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://jacobbuysyourhouse.com/areas/valley-center/#business",
+        "name": "Jacob Buys Your House — Valley Center, KS",
+        "url": "https://jacobbuysyourhouse.com/areas/valley-center",
+        "telephone": "+13163683344",
+        "description": "We buy houses for cash in Valley Center, KS. No fees, no repairs, no commissions. Fair cash offer within 24 hours. Close in as little as 7 days.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Valley Center",
+          "addressRegion": "KS",
+          "postalCode": "67147",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.8325,
+          "longitude": -97.3711
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Valley Center",
+          "addressRegion": "KS"
+        },
+        "parentOrganization": {
+          "@id": "https://jacobbuysyourhouse.com/#business"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I sell my house fast in Valley Center KS?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Call or text (316) 368-3344 or submit your address online. We'll deliver a fair cash offer within 24 hours and can close in as little as 7 days — no repairs, no fees, no commissions."}
+          },
+          {
+            "@type": "Question",
+            "name": "Do you buy houses in Valley Center in any condition?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. We buy houses in Valley Center in any condition — fire damage, foundation issues, hoarder situations, major repairs needed. You don't have to fix or clean anything."}
+          },
+          {
+            "@type": "Question",
+            "name": "Are there fees or commissions when selling your house in Valley Center?",
+            "acceptedAnswer": {"@type": "Answer", "text": "None. No real estate commissions, no agent fees, no closing costs. What we offer is exactly what you receive."}
+          }
+        ]
+      }
+    ]
+  }
+</script>
 </InnerPage>

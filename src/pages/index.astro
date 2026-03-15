@@ -9,15 +9,110 @@ import LeadForm from '../components/LeadForm.astro';
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "name": "Jacob Buys Your House",
-    "url": "https://jacobbuysyourhouse.com",
-    "telephone": "+13163683344",
-    "address": { "@type": "PostalAddress", "addressLocality": "Wichita", "addressRegion": "KS", "addressCountry": "US" },
-    "areaServed": ["Wichita","Derby","Mulvane","Haysville","Andover","Augusta","El Dorado"],
-    "openingHours": "Mo-Su 08:00-20:00"
+    "@graph": [
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://jacobbuysyourhouse.com/#business",
+        "name": "Jacob Buys Your House",
+        "url": "https://jacobbuysyourhouse.com",
+        "telephone": "+13163683344",
+        "description": "Local cash home buyer in Wichita, KS. We buy houses in any condition — no fees, no repairs, no commissions. Fair cash offer in 24 hours. Close in as little as 7 days.",
+        "priceRange": "$$",
+        "image": "https://jacobbuysyourhouse.com/logo.svg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wichita",
+          "addressRegion": "KS",
+          "postalCode": "67202",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.6872,
+          "longitude": -97.3301
+        },
+        "areaServed": [
+          {"@type": "City", "name": "Wichita", "addressRegion": "KS"},
+          {"@type": "City", "name": "Derby", "addressRegion": "KS"},
+          {"@type": "City", "name": "Mulvane", "addressRegion": "KS"},
+          {"@type": "City", "name": "Haysville", "addressRegion": "KS"},
+          {"@type": "City", "name": "Andover", "addressRegion": "KS"},
+          {"@type": "City", "name": "Augusta", "addressRegion": "KS"},
+          {"@type": "City", "name": "El Dorado", "addressRegion": "KS"},
+          {"@type": "City", "name": "Park City", "addressRegion": "KS"},
+          {"@type": "City", "name": "Bel Aire", "addressRegion": "KS"},
+          {"@type": "City", "name": "Valley Center", "addressRegion": "KS"},
+          {"@type": "City", "name": "Goddard", "addressRegion": "KS"},
+          {"@type": "City", "name": "Maize", "addressRegion": "KS"}
+        ],
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "08:00",
+          "closes": "20:00"
+        },
+        "sameAs": [
+          "https://pillarhomebuyers.com"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How fast can you close on my house in Wichita?",
+            "acceptedAnswer": {"@type": "Answer", "text": "We can close in as little as 7 days using a local Wichita title company. You pick the closing date that works best for your schedule."}
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to make repairs or clean the house before selling?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. We buy houses as-is in any condition. Leave whatever you don't want — furniture, trash, belongings. We handle everything."}
+          },
+          {
+            "@type": "Question",
+            "name": "Are there any fees or commissions when selling to Jacob?",
+            "acceptedAnswer": {"@type": "Answer", "text": "None. There are no real estate commissions, no agent fees, and no closing costs. What we offer is exactly what you receive at closing."}
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a cash offer for my Wichita house?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Submit your property address on our website or call/text (316) 368-3344. We'll review your property and deliver a fair cash offer within 24 hours — no obligation."}
+          },
+          {
+            "@type": "Question",
+            "name": "Will you buy a house in really bad condition?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. Foundation problems, fire damage, hoarder situations, major structural issues — condition does not prevent us from making an offer."}
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Sell Your House Fast for Cash in Wichita KS",
+        "description": "Sell your Wichita house for cash in 3 simple steps — no repairs, no fees, no hassle.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Submit Your Property",
+            "text": "Enter your property address online or call (316) 368-3344. Takes less than 2 minutes."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Get Your Cash Offer",
+            "text": "We review your property and deliver a fair, no-obligation cash offer within 24 hours."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Choose Your Closing Date",
+            "text": "Pick any closing date — as fast as 7 days. We handle all paperwork and pay all closing costs."
+          }
+        ]
+      }
+    ]
   }
-  </script>
+</script>
 
   <style>
 

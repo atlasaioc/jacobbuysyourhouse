@@ -3,7 +3,7 @@ import InnerPage from '../../layouts/InnerPage.astro';
 ---
 <InnerPage
   title="We Buy Houses in Augusta, KS | Jacob Buys Your House"
-  description="Sell your Augusta, KS home fast for cash. No commissions, no repairs. Jacob makes it simple."
+  description="Sell your house fast for cash in Augusta, KS. Fair offer in 24 hours from a local buyer. No commissions, no repairs required, we pay all closing costs."
   heroImage="/cities/augusta.jpg"
   heroTitle="We Buy Houses in Augusta, KS"
   heroSub="Sell your Augusta, KS home fast for cash. No commissions, no repairs. Jacob makes it simple."
@@ -89,4 +89,59 @@ import InnerPage from '../../layouts/InnerPage.astro';
   <h2>Ready to Talk?</h2>
   <p>Call or text <a href="tel:3163683344"><strong>(316) 368-3344</strong></a>. No pressure, no obligation — just a straight conversation about your property and what makes sense for your situation.</p>
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://jacobbuysyourhouse.com/areas/augusta/#business",
+        "name": "Jacob Buys Your House — Augusta, KS",
+        "url": "https://jacobbuysyourhouse.com/areas/augusta",
+        "telephone": "+13163683344",
+        "description": "We buy houses for cash in Augusta, KS. No fees, no repairs, no commissions. Fair cash offer within 24 hours. Close in as little as 7 days.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Augusta",
+          "addressRegion": "KS",
+          "postalCode": "67010",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.6906,
+          "longitude": -96.9728
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Augusta",
+          "addressRegion": "KS"
+        },
+        "parentOrganization": {
+          "@id": "https://jacobbuysyourhouse.com/#business"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I sell my house fast in Augusta KS?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Call or text (316) 368-3344 or submit your address online. We'll deliver a fair cash offer within 24 hours and can close in as little as 7 days — no repairs, no fees, no commissions."}
+          },
+          {
+            "@type": "Question",
+            "name": "Do you buy houses in Augusta in any condition?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. We buy houses in Augusta in any condition — fire damage, foundation issues, hoarder situations, major repairs needed. You don't have to fix or clean anything."}
+          },
+          {
+            "@type": "Question",
+            "name": "Are there fees or commissions when selling your house in Augusta?",
+            "acceptedAnswer": {"@type": "Answer", "text": "None. No real estate commissions, no agent fees, no closing costs. What we offer is exactly what you receive."}
+          }
+        ]
+      }
+    ]
+  }
+</script>
 </InnerPage>
