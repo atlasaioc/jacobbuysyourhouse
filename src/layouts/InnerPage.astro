@@ -57,7 +57,7 @@ const url = canonical || Astro.url.href;
     .site-header { background: white; position: sticky; top: 0; z-index: 200; border-bottom: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
     .header-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
     .logo { font-size: 17px; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: -0.4px; }
-    .logo .accent { color: var(--blue); }
+    .logo-buys { color: #3aa1f8; }
     .logo .com { color: var(--gray); font-weight: 500; font-size: 13px; }
     .site-nav { display: flex; align-items: center; gap: 4px; }
     .site-nav a { color: var(--text-light); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: all .15s; white-space: nowrap; }
@@ -202,6 +202,8 @@ const url = canonical || Astro.url.href;
     @media(max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 </head>
 <body>
   <div class="topbar">
