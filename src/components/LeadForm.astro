@@ -1,5 +1,4 @@
 ---
-const ACCESS_KEY = "283b2736-f1c9-4f16-ba85-80937d302548";
 ---
 
 <style>
@@ -269,7 +268,7 @@ const ACCESS_KEY = "283b2736-f1c9-4f16-ba85-80937d302548";
 
 </div>
 
-<script define:vars={{ ACCESS_KEY }}>
+<script>
   // Store all form data
   const mfData = {};
 
@@ -349,36 +348,29 @@ const ACCESS_KEY = "283b2736-f1c9-4f16-ba85-80937d302548";
 
     // Build submission payload
     const payload = {
-      access_key: ACCESS_KEY,
-      subject: '🏠 New Lead — Jacob Buys Your House',
-      from_name: 'jacobbuysyourhouse.com',
-      to: 'jacobm@pillarhomebuyers.com',
-      ...mfData,
-      message: `
-PROPERTY: ${mfData.address}
-PHONE: ${mfData.phone}
-NAME: ${mfData.name}
-EMAIL: ${mfData.email || 'Not provided'}
----
-Listed: ${mfData.listed || 'Not answered'}
-Timeline: ${mfData.timeline || 'Not answered'}
-Condition: ${mfData.condition || 'Not answered'}
-As-Is Value (seller estimate): ${mfData.as_is_value || 'Not answered'}
-Offer Expectation: ${mfData.offer_expectation || 'Not answered'}
-Selling Reason: ${mfData.selling_reason || 'Not answered'}
-How Heard: ${mfData.how_heard || 'Not answered'}
-SMS Consent: ${mfData.sms_consent}
-      `.trim()
+      first_name: mfData.first_name,
+      last_name: mfData.last_name || '',
+      name: mfData.name,
+      phone: mfData.phone,
+      email: mfData.email || '',
+      property_address: mfData.address,
+      listed: mfData.listed || '',
+      timeline: mfData.timeline || '',
+      condition: mfData.condition || '',
+      as_is_value: mfData.as_is_value || '',
+      offer_expectation: mfData.offer_expectation || '',
+      selling_reason: mfData.selling_reason || '',
+      how_heard: mfData.how_heard || '',
+      sms_consent: mfData.sms_consent,
+      source: 'jacobbuysyourhouse.com'
     };
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://hooks.zapier.com/hooks/catch/15741649/upya5gb/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      const result = await res.json();
-      if (result.success) {
+      if (res.ok) {
         document.querySelectorAll('.mf-step').forEach(s => s.style.display = 'none');
         document.getElementById('mf-disclaimer').style.display = 'none';
         document.getElementById('mf-success').style.display = 'block';
