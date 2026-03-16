@@ -24,6 +24,16 @@ const url = canonical || Astro.url.href;
   <meta property="og:image" content={`https://jacobbuysyourhouse.com${heroImage}`} />
   <meta property="og:type" content="article" />
   <meta name="robots" content="index, follow" />
+  <meta property="og:url" content={url} />
+  <meta property="og:image" content="https://jacobbuysyourhouse.com/og-image.jpg" />
+  <meta property="og:site_name" content="Jacob Buys Your House" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://jacobbuysyourhouse.com/og-image.jpg" />
+  <meta name="geo.region" content="US-KS" />
+  <meta name="geo.placename" content="Wichita, Kansas" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
