@@ -283,14 +283,20 @@
     if (currentStep === 1) {
       const phone = document.getElementById('mf_phone').value.trim();
       const address = document.getElementById('mf_address').value.trim();
-      if (!phone || !address) {
+      const consent = document.getElementById('mf_sms_consent').checked;
+      if (!phone || !address || !consent) {
+        let msg = 'Please enter your phone number and property address.';
+        if (phone && address && !consent) msg = 'Please check the SMS consent box to continue.';
+        else if (phone && !address) msg = 'Please enter your property address.';
+        else if (!phone) msg = 'Please enter your phone number.';
+        document.getElementById('mf-err-1').textContent = msg;
         document.getElementById('mf-err-1').style.display = 'block';
         return;
       }
       document.getElementById('mf-err-1').style.display = 'none';
       mfData.phone = phone;
       mfData.address = address;
-      mfData.sms_consent = document.getElementById('mf_sms_consent').checked ? 'Yes' : 'No';
+      mfData.sms_consent = 'Yes';
     }
     if (currentStep === 3) {
       const val = document.getElementById('mf_timeline').value;
