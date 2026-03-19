@@ -9,7 +9,7 @@ export interface Props {
   readTime: string;
 }
 const { title, description, canonical, heroImage, category, date, readTime } = Astro.props;
-const url = canonical || Astro.url.href;
+const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "jacobbuysyourhouse.com");
 ---
 <!DOCTYPE html>
 <html lang="en">
