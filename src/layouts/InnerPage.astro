@@ -86,6 +86,7 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
       display: flex;
       align-items: flex-end;
       overflow: hidden;
+      background: var(--blue);
     }
     .page-hero-bg {
       position: absolute; inset: 0;
@@ -93,6 +94,11 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
       background-position: center;
       filter: brightness(.42);
       transform: scale(1.03);
+    }
+    @media(max-width: 768px) {
+      .page-hero { min-height: 0; }
+      .page-hero-bg { transform: none; }
+      .page-hero-content { padding: 40px 0 36px; }
     }
     .page-hero-content {
       position: relative; z-index: 2;
