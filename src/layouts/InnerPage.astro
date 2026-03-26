@@ -138,7 +138,7 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
     /* MAIN LAYOUT: content + sidebar */
     .page-body { padding: 64px 0 80px; }
     .page-layout { display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: start; }
-    @media(max-width: 1000px){ .page-layout { grid-template-columns: 1fr; } .page-sidebar { display: block; order: -1; } }
+    @media(max-width: 1000px){ .page-layout { grid-template-columns: 1fr; } .page-sidebar { display: block; order: -1; position: static; } }
 
     /* CONTENT COLUMN */
     .page-content h2 { font-size: 1.5rem; font-weight: 800; color: var(--blue-dark); margin: 40px 0 14px; padding-top: 8px; border-top: 2px solid var(--blue-light); }
@@ -168,6 +168,8 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
 
     /* SIDEBAR */
     .page-sidebar { position: sticky; top: 24px; align-self: start; }
+    @media(max-width: 1000px){ .page-sidebar { position: static; top: auto; width: 100%; max-width: 480px; margin: 0 auto 32px; } }
+    @media(max-width: 600px){ .page-sidebar { max-width: 100%; margin: 0 0 24px; } }
     .sidebar-cta {
       background: var(--blue);
       border-radius: 18px;

@@ -121,7 +121,7 @@ import LeadForm from '../components/LeadForm.astro';
       background: var(--blue);
       padding: 64px 0;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     .hero::before {
       content: '';
@@ -177,6 +177,15 @@ import LeadForm from '../components/LeadForm.astro';
       .hero-layout { grid-template-columns: 1fr; gap: 32px; }
       .hero-left { text-align: center; }
       .trust-row { justify-content: center; }
+      .hero { overflow: visible; padding: 48px 0 56px; }
+      .hero-right { width: 100%; max-width: 480px; margin: 0 auto; }
+    }
+    @media(max-width: 640px) {
+      .hero { padding: 36px 0 44px; }
+      .hero-layout { gap: 24px; }
+      .hero h1 { font-size: 2rem; }
+      .hero-sub { font-size: 16px; }
+      .hero-right { max-width: 100%; }
     }
 
     /* ─── STATS BAR ─── */
