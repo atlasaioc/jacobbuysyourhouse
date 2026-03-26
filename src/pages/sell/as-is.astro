@@ -125,4 +125,33 @@ import InnerPage from '../../layouts/InnerPage.astro';
     ]
   }
 </script>
+
+  <div class="related-section">
+    <h3>Related Pages</h3>
+    <div class="related-grid">
+        <div class="related-card">
+          <a href="/sell/bad-condition"><strong>Houses in Bad Condition</strong></a>
+          <p>Major repairs, structural issues, or worse — we buy those too.</p>
+        </div>
+        <div class="related-card">
+          <a href="/sell/fire-damage"><strong>Fire Damaged House</strong></a>
+          <p>Sold as-is, no cleanup, no contractor bids needed.</p>
+        </div>
+        <div class="related-card">
+          <a href="/cash-home-buyers-wichita"><strong>Cash Home Buyers in Wichita</strong></a>
+          <p>How the cash buying process works and what to expect.</p>
+        </div>
+    </div>
+  </div>
+
+  <style>
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 2px solid #f0f4f8; }
+    .related-section h3 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .related-card { background: #f8fafc; border: 1px solid #e8eef4; border-radius: 10px; padding: 14px 16px; }
+    .related-card a { color: #1a82d8; text-decoration: none; font-size: 14px; }
+    .related-card a:hover { text-decoration: underline; }
+    .related-card p { font-size: 13px; color: #666; margin: 4px 0 0; line-height: 1.4; }
+  </style>
+
 </InnerPage>

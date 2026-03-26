@@ -142,4 +142,33 @@ import InnerPage from '../../layouts/InnerPage.astro';
     ]
   }
 </script>
+
+  <div class="related-section">
+    <h3>Related Pages</h3>
+    <div class="related-grid">
+        <div class="related-card">
+          <a href="/sell/foreclosure"><strong>Facing Foreclosure</strong></a>
+          <p>Full overview of options when foreclosure is on the table.</p>
+        </div>
+        <div class="related-card">
+          <a href="/sell/behind-on-taxes"><strong>Behind on Taxes</strong></a>
+          <p>When tax problems compound into bigger issues.</p>
+        </div>
+        <div class="related-card">
+          <a href="/we-buy-houses-wichita"><strong>We Buy Houses in Wichita</strong></a>
+          <p>Any situation — see all the ways we help Wichita homeowners.</p>
+        </div>
+    </div>
+  </div>
+
+  <style>
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 2px solid #f0f4f8; }
+    .related-section h3 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .related-card { background: #f8fafc; border: 1px solid #e8eef4; border-radius: 10px; padding: 14px 16px; }
+    .related-card a { color: #1a82d8; text-decoration: none; font-size: 14px; }
+    .related-card a:hover { text-decoration: underline; }
+    .related-card p { font-size: 13px; color: #666; margin: 4px 0 0; line-height: 1.4; }
+  </style>
+
 </InnerPage>
