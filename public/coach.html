@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Coach Session</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f1923;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    background: #1a2535;
+    border-radius: 20px;
+    padding: 36px 28px;
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+  }
+  .label {
+    font-size: 13px;
+    color: #8899aa;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .progress {
+    font-size: 13px;
+    color: #e87122;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+  .question {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #fff;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .rec-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: #8899aa;
+    min-height: 28px;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e87122;
+    animation: pulse 1.2s ease-in-out infinite;
+    display: none;
+  }
+  .dot.active { display: block; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    border-radius: 14px;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: opacity 0.15s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.85; }
+  .btn-primary { background: #e87122; color: #fff; }
+  .btn-next { background: #3aa1f8; color: #fff; }
+  .btn-submit { background: #27ae60; color: #fff; }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+  .btn-speak {
+    background: transparent;
+    border: 2px solid #3aa1f8;
+    color: #3aa1f8;
+    font-size: 15px;
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+  .status {
+    font-size: 14px;
+    color: #8899aa;
+    margin-top: 8px;
+    min-height: 20px;
+  }
+  .done-screen { display: none; }
+  .done-screen.visible { display: block; }
+  .main-screen.hidden { display: none; }
+  .checkmark { font-size: 64px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- START SCREEN -->
+  <div id="startScreen">
+    <div class="label">Coach Ai-nes</div>
+    <div class="question" style="min-height:80px; font-size:18px; color:#8899aa;">Weekly update session. Hit Start when you're ready. Questions will be read aloud.</div>
+    <button class="btn btn-primary" onclick="startSession()">Start Session</button>
+  </div>
+
+  <!-- MAIN SCREEN -->
+  <div id="mainScreen" class="main-screen hidden">
+    <div class="label">Coach Ai-nes</div>
+    <div class="progress" id="progress">Question 1 of 7</div>
+    <div class="question" id="questionText"></div>
+    <div class="rec-indicator">
+      <div class="dot active" id="recDot"></div>
+      <span id="recLabel">Recording...</span>
+    </div>
+    <button class="btn btn-speak" onclick="replayQuestion()" id="replayBtn">🔊 Replay Question</button>
+    <button class="btn btn-next" onclick="nextQuestion()" id="nextBtn">Next Question →</button>
+    <button class="btn btn-submit" onclick="submitSession()" id="submitBtn" style="display:none">Submit to Atlas ✓</button>
+    <div class="status" id="statusMsg"></div>
+  </div>
+
+  <!-- DONE SCREEN -->
+  <div id="doneScreen" class="done-screen">
+    <div class="checkmark">✅</div>
+    <div class="label">Session Complete</div>
+    <div class="question" style="font-size:18px; color:#8899aa; min-height:60px;">Atlas has your responses. You'll get a summary and task list back.</div>
+  </div>
+
+</div>
+
+<script>
+const BOT_TOKEN = '8542695146:AAHuEvg3R_9eopIuQ6zEQk6aYSY5g5vCK_Y';
+const CHAT_ID = '8622079214';
+
+// Questions — will be refreshed via fetch if available
+let questions = [
+  "What's the single biggest thing on your mind right now that you haven't had time to deal with?",
+  "Where does the acquisitions team stand — are you confident in the pipeline, or does something feel off?",
+  "What's one thing about the business that's working better than you expected right now?",
+  "What decisions are you sitting on that you keep pushing off — and what's stopping you from making them?",
+  "If you could change one thing about how the team operates day to day, what would it be?",
+  "What are you learning right now — from calls, from deals, from conversations — that you want to remember?",
+  "What do you need from me this week that I'm not already doing?"
+];
+
+let currentIndex = 0;
+let mediaRecorder = null;
+let audioChunks = [];
+let stream = null;
+let isRecording = false;
+
+async function startSession() {
+  // Request mic
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch(e) {
+    alert('Microphone access required. Please allow mic and try again.');
+    return;
+  }
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('mainScreen').classList.remove('hidden');
+
+  startRecording();
+  showQuestion(0);
+}
+
+function startRecording() {
+  audioChunks = [];
+  const options = MediaRecorder.isTypeSupported('audio/webm') ? { mimeType: 'audio/webm' } : {};
+  mediaRecorder = new MediaRecorder(stream, options);
+  mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+  mediaRecorder.start(1000);
+  isRecording = true;
+  document.getElementById('recDot').classList.add('active');
+  document.getElementById('recLabel').textContent = 'Recording...';
+}
+
+function showQuestion(index) {
+  currentIndex = index;
+  const q = questions[index];
+  document.getElementById('questionText').textContent = q;
+  document.getElementById('progress').textContent = `Question ${index + 1} of ${questions.length}`;
+
+  const isLast = index === questions.length - 1;
+  document.getElementById('nextBtn').style.display = isLast ? 'none' : 'block';
+  document.getElementById('submitBtn').style.display = isLast ? 'block' : 'none';
+
+  speakQuestion(q);
+}
+
+function speakQuestion(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.rate = 0.92;
+  utt.pitch = 1.0;
+  utt.volume = 1.0;
+  // Pick a good voice if available
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v => v.name.includes('Samantha') || v.name.includes('Google US') || v.name.includes('Alex'));
+  if (preferred) utt.voice = preferred;
+  window.speechSynthesis.speak(utt);
+}
+
+function replayQuestion() {
+  speakQuestion(questions[currentIndex]);
+}
+
+function nextQuestion() {
+  if (currentIndex < questions.length - 1) {
+    showQuestion(currentIndex + 1);
+  }
+}
+
+async function submitSession() {
+  if (!isRecording) return;
+
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').textContent = 'Sending...';
+  document.getElementById('statusMsg').textContent = 'Stopping recording...';
+
+  // Stop recording
+  mediaRecorder.stop();
+  stream.getTracks().forEach(t => t.stop());
+  isRecording = false;
+
+  // Wait for final chunks
+  await new Promise(r => setTimeout(r, 800));
+
+  document.getElementById('statusMsg').textContent = 'Sending to Atlas...';
+
+  const mimeType = audioChunks[0]?.type || 'audio/webm';
+  const ext = mimeType.includes('mp4') ? 'm4a' : mimeType.includes('ogg') ? 'ogg' : 'webm';
+  const blob = new Blob(audioChunks, { type: mimeType });
+  const filename = `coach_session_${new Date().toISOString().slice(0,10)}.${ext}`;
+
+  const form = new FormData();
+  form.append('chat_id', CHAT_ID);
+  form.append('document', blob, filename);
+  form.append('caption', `🎯 Coach Session — ${new Date().toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'})}\n${questions.length} questions answered. Ready to transcribe.`);
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+      method: 'POST',
+      body: form
+    });
+    const data = await res.json();
+    if (data.ok) {
+      document.getElementById('mainScreen').classList.add('hidden');
+      document.getElementById('doneScreen').classList.add('visible');
+    } else {
+      document.getElementById('statusMsg').textContent = 'Send failed — try again.';
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').textContent = 'Submit to Atlas ✓';
+    }
+  } catch(e) {
+    document.getElementById('statusMsg').textContent = 'Network error — check connection.';
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').textContent = 'Submit to Atlas ✓';
+  }
+}
+
+// Preload voices
+window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+</script>
+</body>
+</html>
