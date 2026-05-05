@@ -54,8 +54,11 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
       --shadow-lg: 0 8px 40px rgba(58,161,248,.15), 0 2px 8px rgba(0,0,0,.06);
     }
 
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: white; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    /* overflow-x: clip on html prevents horizontal scroll without creating a new scroll
+       container — unlike overflow-x: hidden on body, which breaks position: sticky on
+       iOS Safari (iPad/iPhone). Do NOT move this back to body. */
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: white; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
 
     .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }

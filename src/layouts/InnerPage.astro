@@ -51,7 +51,7 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
       --shadow: 0 2px 12px rgba(58,161,248,.1), 0 1px 4px rgba(0,0,0,.06);
       --shadow-lg: 0 8px 40px rgba(58,161,248,.15), 0 2px 8px rgba(0,0,0,.06);
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
     body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: white; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
     .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
@@ -172,8 +172,8 @@ const url = canonical || Astro.url.href.replace("www.jacobbuysyourhouse.com", "j
     .step-body h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .step-body p { font-size: 14px; color: #555; margin: 0; line-height: 1.6; }
 
-    /* SIDEBAR */
-    .page-sidebar { position: sticky; top: 24px; align-self: start; }
+    /* SIDEBAR — top accounts for the 72px sticky header + 16px breathing room */
+    .page-sidebar { position: sticky; top: 88px; align-self: start; }
     @media(max-width: 1000px){ .page-sidebar { position: static; top: auto; width: 100%; max-width: 480px; margin: 0 auto 32px; } }
     @media(max-width: 600px){ .page-sidebar { max-width: 100%; margin: 0 0 24px; } }
     .sidebar-cta {
